@@ -1,0 +1,89 @@
+import React, { Component } from 'react'
+
+class LoginControl extends Component
+{
+	constructor(props)
+	{
+		super(props)
+
+		this.handleSignUpClick = this.handleSignUpClick.bind(this)
+    this.handleSignInClick = this.handleSignInClick.bind(this)
+
+    this.state = { isSignInState: true }
+	}
+
+	handleSignInClick()
+  {
+    if ( this.state.isSignInState !== true)
+    {
+      this.setState({ isSignInState: true })
+
+    }
+  }
+
+  handleSignUpClick()
+  {
+    if (this.state.isSignInState === true)
+      this.setState({ isSignInState: false })
+  }
+
+
+  render()
+  {
+  	let isSignInState = this.state.isSignInState
+  	
+  	let loginForm = null; let signInButton = null; let signUpButton = null;
+  	
+  	if ( isSignInState ) // render Sign In Form
+  	{
+  		loginForm = <SignInForm />
+  		
+  		signInButton = <button className="loginStateButton activeLoginState">
+  			Sign In
+	  	</button>
+  		
+  		signUpButton = <button className="loginStateButton" onClick={this.handleSignUpClick}>
+  			  			Sign Up
+	  		</button>
+  	}
+  	else // render Sign Up form
+  	{
+  		loginForm = <SignUpForm />
+  		
+  		signInButton = <button className="loginStateButton" onClick={this.handleSignInClick}>
+  			Sign In
+	  	</button>
+  		
+  		signUpButton = <button className="loginStateButton activeLoginState">
+		  	Sign Up
+  		</button>
+  	}
+
+  	return (
+  		<div className="loginArea textCenter">
+	  		
+	  		<h1>Login Control</h1>
+	  		{signInButton} {signUpButton}
+  			{loginForm}
+
+  		</div>
+  	)
+  }
+
+}
+
+function SignInForm(props)
+{
+	return (
+		<h1 className="textCenter">Sign In Form</h1>
+	)
+}
+
+function SignUpForm(props)
+{
+	return (
+		<h1 className="textCenter">Sign Up Form</h1>
+	)
+}
+
+export default LoginControl
