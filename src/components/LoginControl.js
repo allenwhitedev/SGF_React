@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SignIn from './signIn'
 
 class LoginControl extends Component
 {
@@ -34,7 +35,7 @@ class LoginControl extends Component
   	
   	let loginForm = null; let signInButton = null; let signUpButton = null;
   	
-  	if ( isSignInState ) // render Sign In Form
+  	if ( isSignInState === true ) // render Sign In Form
   	{
   		loginForm = <SignInForm />
   		
@@ -43,8 +44,8 @@ class LoginControl extends Component
 	  	</button>
   		
   		signUpButton = <button className="loginStateButton" onClick={this.handleSignUpClick}>
-  			  			Sign Up
-	  		</button>
+  		  Sign Up
+	  	</button>
   	}
   	else // render Sign Up form
   	{
@@ -75,7 +76,7 @@ class LoginControl extends Component
 function SignInForm(props)
 {
 	return (
-		<h1 className="textCenter">Sign In Form</h1>
+		<SignIn />
 	)
 }
 

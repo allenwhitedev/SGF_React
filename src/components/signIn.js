@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { Component }  from 'react';
 
-var signIn = React.createClass ({
+class SignIn extends Component 
+{
 
-  getInitialState: function(){
+  constructor(props)
+  {
+    super(props)
+
+    this.state = { username: "", password: "" }
+
+    this.handleChangeName = this.handleChangeName.bind(this)
+    this.handleChangePassword = this.handleChangePassword.bind(this)
+    this.handleSubmitForm = this.handleSubmitForm.bind(this)
+  }
+
+  handleChangeName(event)
+  {
+    this.setState({username: event.target.value})
+  }
+
+  handleChangePassword(event)
+  {
+    this.setState({password: event.target.value})
+  }
+
+  handleSubmitForm(event)
+  {
+    console.log("Submit login, assuming for now login was successful")
+  }
+
+  render()
+  {
     return (
-      this.state = {
-        username: '',
-        password: '',
-      }
-    );
-  },
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value})
-  },
-
-  onSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
-  },
-
-  render: function(){
-    return (
-      <form onSubmit={this.onSubmit} id="signIn">
+      <form onSubmit={this.handleSubmitForm} id="signIn">
         <div>
-          <input value={this.state.username} onChange={this.onChange} type="text" name="username" placeholder="email/username"/><br/>
-          <input value={this.state.password} onChange={this.onChange} type="password" name="password" placeholder="password"/>
+          <input value={this.state.username} onChange={this.handleChangeName} type="text" name="username" placeholder="email/username"/><br/>
+          <input value={this.state.password} onChange={this.handleChangePassword} type="password" name="password" placeholder="password"/>
         </div>
         <div>
           <button>
@@ -33,8 +43,9 @@ var signIn = React.createClass ({
           </button>
         </div>
       </form>
-    );
+    )
   }
-})
 
-export default signIn;
+}
+
+export default SignIn;
