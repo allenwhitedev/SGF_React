@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-class SignIn extends Component 
+class SignIn extends Component
 {
 
   constructor(props)
@@ -26,7 +26,7 @@ class SignIn extends Component
 
   handleSubmitForm(event)
   {
-    console.log("Submit login, assuming for now login was successful")
+    alert("Submit login, assuming for now login was successful")
   }
 
   render()
