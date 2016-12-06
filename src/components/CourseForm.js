@@ -8,24 +8,27 @@ class CourseForm extends Component
 
 	  this.handleOnChange = this.handleOnChange.bind(this)
     this.handleOnSubmit = this.handleOnSubmit.bind(this)
-    this.state = {courses: ""}
+    this.state = {courses: [], newCourse: ""}
 	}
 
   handleOnChange(event)
   {
-    this.setState({courses: event.target.value})
+    this.setState({newCourse: event.target.value})
   }
 
-  handleOnSubmit()
+  handleOnSubmit(event)
   {
-    alert("Needs to push to courses")
+    event.preventDefault()
+    
+    // adds new course to courses, reset newCourse state
+    this.setState({ courses: this.state.courses.concat(this.state.newCourse), newCourse: "" })
   }
 
   render()
   {
     return(
-      <form onSubmit={this.handleOnSubmit} id="signIn">
-          <input value={this.state.courses} onChange={this.handleOnChange} type="text" name="courses" placeholder="enter course"/>
+      <form className="newCourseForm textCenter" onSubmit={this.handleOnSubmit} id="signIn">
+        <input className="newCourseInput textCenter" value={this.state.newCourse} onChange={this.handleOnChange} type="text" name="newCourse" placeholder="enter course"/>
       </form>
     )
   }

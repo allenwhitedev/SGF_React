@@ -29,7 +29,6 @@ class CourseSelection extends Component
 
   render()
   {
-    let newCourse = null;
     let displayCourse = <DisplayCourse/>;
     let courseForm = <CourseInput />
 

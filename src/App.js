@@ -19,10 +19,11 @@ class App extends Component
     return (
       <div className="appBody">
         <header className="textCenter">
-          <h1 className="textCenter">Login Page</h1>
+          <h1 className="textCenter">SGF React</h1>
           <img className="logo" src={logo} alt="logo" />
         </header>
 
+        <CourseSelection />
         <CourseForm />
       </div>
     )
