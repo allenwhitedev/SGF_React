@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
-import LoginControl from './components/LoginControl.js'
+// import LoginControl from './components/LoginControl.js'
 import CourseSelection from './components/CourseSelection.js'
 import './App.css'
 
@@ -21,7 +21,6 @@ class App extends Component
           <h1 className="textCenter">SGF React</h1>
           <img className="logo" src={logo} alt="logo" />
         </header>
-
         <CourseSelection />
       </div>
     )
