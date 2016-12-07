@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import LoginControl from './components/LoginControl.js'
 import CourseSelection from './components/CourseSelection.js'
-import CourseForm from './components/CourseForm.js'
 import './App.css'
 
 class App extends Component
@@ -24,7 +23,6 @@ class App extends Component
         </header>
 
         <CourseSelection />
-        <CourseForm />
       </div>
     )
   }
