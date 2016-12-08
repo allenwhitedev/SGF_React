@@ -18,10 +18,11 @@ class CourseSelection extends Component
     alert("Submit Courses, assuming for now submit was successful")
   }
 
-  handleOnRemove(index)
+  handleOnRemove(event)
   {
-    this.state.courses.splice(index, 1);
-    this.setState(this.state);
+    let index = event.target.id
+    this.state.courses.splice(index, 1)
+    this.setState(this.state)
   }
 
   handleOnChange(event)
@@ -39,7 +40,7 @@ class CourseSelection extends Component
 
   render()
   {
-    let submitButton = null;
+    let submitButton = null
 
     (this.state.courses.length > 0)
     ?
@@ -53,11 +54,11 @@ class CourseSelection extends Component
 
     let courses = this.state.courses
 
-    // course is object currently being mapped, index is position of current object in its array
-    let coursesDisplay = courses.map( (course, index) =>
+    // courses is object currently being mapped, index is position of current object in its array
+    let coursesDisplay = courses.map( (courses, index) =>
       <li key={index} className="course">
-        {course}
-        <a className="remove-course" onClick={this.handleOnRemove}>✖</a>
+        {courses}
+        <a className="remove-course" id={index} onClick={this.handleOnRemove}>✖</a>
       </li>
     )
 
