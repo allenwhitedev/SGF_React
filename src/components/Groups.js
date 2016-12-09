@@ -112,6 +112,11 @@ class Groups extends Component
     console.log("group to add name:", name)
 
     let tmpGroups = this.state.myGroups
+    let tmpGroupsHere = this.state.groupsHere
+    
+    tmpGroupsHere[name.index].members.push("basidjfkdkdf")
+
+    console.log("tmpGroupsHere", tmpGroupsHere)
     
     for (let i = 0; i < tmpGroups.length; i++)
       if ( tmpGroups[i].name === name.name )
@@ -120,9 +125,10 @@ class Groups extends Component
     tmpGroups.push(name)
 
     this.setState((prevState, props) => ({
-      myGroups: tmpGroups
-    }));
+      myGroups: tmpGroups, groupsHere: tmpGroupsHere
+    }))
 
+    console.log("state.groupsHere[0]", this.state.groupsHere[0])
 
   }
 
@@ -198,8 +204,8 @@ class Groups extends Component
     ]
 
 
-    let groupsDisplay = dummyGroups.map((dummyGroups,index) =>
-      <li key={index} className="group boxShadow1" id={index} onClick={ () => this.handleClickGroup({name: dummyGroups.name, class: dummyGroups.class}) }>
+    let groupsDisplay = this.state.groupsHere.map((dummyGroups,index) =>
+      <li key={index} className="group boxShadow1" id={index} onClick={ () => this.handleClickGroup({name: dummyGroups.name, class: dummyGroups.class, index: index}) }>
         <section className="groupTextInfo"> 
           <h2 className="groupName verticalAlignFlex"> <img className="gravatarSmall marginRight10px" src={this.getGravatar(dummyGroups.gravatar)} alt=""/> <span> {dummyGroups.name} - {dummyGroups.class} </span> </h2>
           <h3>{dummyGroups.description}</h3>
