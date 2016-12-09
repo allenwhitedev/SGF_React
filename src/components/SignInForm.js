@@ -62,7 +62,7 @@ class SignInForm extends Component
           </section>
 
           <br /> <br />
-          <button className="defaultButton"> SUBMIT </button>
+          <button className="defaultButton boxShadow1"> SUBMIT </button>
       </form>
     )
   }

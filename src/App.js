@@ -19,7 +19,7 @@ class App extends Component
       <div className="appBody">
  
         {/* App Bar */}
-        <header className="appBar verticalAlignFlex"> 
+        <header className="appBar verticalAlignFlex boxShadow1"> 
           <h1 className="verticalAlignFlex"> 
             <img className="logo paddingRight10px" src={logo} alt="logo"/> 
             <span className="tabPlusOnly"> Study Group Finder </span>
@@ -34,11 +34,6 @@ class App extends Component
 
       {/* Login Page */}
       {/* <LoginControl /> */}
-
-        <header className="textCenter">
-          <h1 className="textCenter">SGF React</h1>
-          <img className="logo" src={logo} alt="logo" />
-        </header>
       </div>
     )
   }

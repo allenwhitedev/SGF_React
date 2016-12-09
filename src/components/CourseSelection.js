@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 class CourseSelection extends Component
 {
@@ -71,17 +72,18 @@ class CourseSelection extends Component
 
     (this.state.courses.length > 0)
     ? // true
-      submitButton = <button className="submitButton textCenter">
-        Take Me To Groups
+      submitButton = <button className="groupsButton textCenter defaultButton boxShadow2">
+        <Link to="/"> Go To Groups </Link>
       </button>
     : // false
-      submitButton = <button className="submitButton textCenter" disabled="true" onSubmit={this.handleSubmitCourses}>
-        Take Me To Groups
+      submitButton = <button className="groupsButton textCenter defaultButton boxShadow2 disabled" disabled="true" onSubmit={this.handleSubmitCourses}>
+        Go To Groups
       </button>
-
-    submitButton = <button className="submitButton textCenter">
-      Take Me To Groups
+    {/*
+    submitButton = <button className="groupsButton textCenter defaultButton boxShadow2">
+      Go To Groups
     </button>
+    */}
 
     let courses = this.state.courses
 
@@ -89,22 +91,28 @@ class CourseSelection extends Component
     let coursesDisplay = courses.map( (course, index) =>
       <li key={index} className="course">
         {course}
-        <a className="remove-course" id={index} onClick={this.handleOnRemove}>✖</a>
+        <a className="remove-course" id={index} onClick={this.handleOnRemove}> <i className="material-icons">close</i> </a>
       </li>
     )
 
 
     return(
       <section className="courseSelection">
-
+        <br/> <br/>
         {/* Courses Display */}
         <ul className="courses textCenter"> {coursesDisplay} </ul>
 
         {/* New Course Form */}
         <form className="newCourseForm textCenter" onSubmit={this.handleOnSubmit} id="signIn">
-          <input className="newCourseInput textCenter" value={this.state.newCourse} onChange={this.handleOnChange} type="text" name="newCourse" placeholder="enter course"/>
+          <section className="inputArea">
+            <input className="newCourseInput textCenter" value={this.state.newCourse} onChange={this.handleOnChange} type="text" name="newCourse" placeholder="enter course"/>
+          </section>
         </form>
-        {submitButton}
+
+        <footer className="submitButtonArea fullWidth textCenter">
+          {submitButton}
+        </footer>
+        
       </section>
     )
   }

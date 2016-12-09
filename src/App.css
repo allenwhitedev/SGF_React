@@ -1,14 +1,19 @@
 /* roboto overrides */
 h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight: 300; }
+li { list-style: none }/* list style override */
 
 /* general stylings */
 .activeFont { color: #41b097 !important;  }
+.boxShadow1 { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+.boxShadow2 { box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); }
+.boxShadow3 { box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); }
 .center { margin: auto;  }
 .defaultButton 
 { 
 	background-color: #41b097; border: none; font-size: 1.5rem; color: #fff; 
 	border-radius: 3px; font-weight: 300; padding : 8px 100px; 
 }
+.disabled { background-color: #BDBDBD; }
 .flexCenter { display: flex; justify-content: center; align-items: center;  }
 .fullWidth { width: 100%; }
 .paddingRight10px { padding-right: 10px;  }
@@ -29,29 +34,39 @@ h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight
 	{ background-color: #00796b; border-radius: 50%; height: 8px; width: 8px; margin: 5px auto;  }
 .activeLoginState { color: #00796b !important; border: none !important; outline: none; }
 /* .activeLoginState:focus { outline: 0!important; } */
-.schoolLogo { height: 300px; width: 300px; } /* logo */ 
+.schoolLogo { height: 200px; width: 300px; max-height: 30%; max-width: 60%; } 
+.schoolName { transform: translateY(-30px); margin: 0;} 
 .loginStateButton 
 	{ font-size: 1.75rem; background-color: transparent; border: none; color: #757575;}
-.loginStateButtonsContainer { margin-bottom: 40px; }
+.loginStateButtonsContainer { margin-bottom: 20px; }
 .inputArea > input 
 { 
 	border: none; border-bottom: 2px solid #848484; background-color: transparent; outline: none;  
 	margin: 12px 10px; font-size: 1.5rem; color: #848484; padding-left: 5px;
+	width: 60%; max-width: 600px;
 }
 .inputArea > input::-webkit-input-placeholder { color: #bdbdbd; }
 .inputArea > input:focus { border-bottom-color: #41b097;  }
 .inputIcon 
 	{ color: #848484; font-size: 40px; vertical-align: middle; transform: translateY(-3px); }
-
+.numGroupsForSchool { color: #9e9e9e; font-size: .9rem; margin: 2px 0 0 0; }
 
 /* Course Selection */
+.course { font-size: 1.5rem; margin: 20px auto; color: #848484; }
 .newCourseInput 
 	{ font-size: 1.25rem; border: none; border-bottom: 2px solid #BDBDBD; border-radius: 2px;  }
+.submitButtonArea { position: absolute; bottom: 60px; }
+.groupsButton > a { color: #fff; text-decoration: none; }
 
-.displayNone { display: none; }
+/* Desktop/Large Tablet  */
+@media (min-width: 800px)
+{
+	.groupsButton { width: 60%; max-width: 600px;  }	
+}
 
-	
-/* Desktop/Tablet Only (Hides on mobile)  */	
+
+
+/* Desktop/Tablet/Large Phone Only (Hides on mobile)  */	
 @media (max-width: 400px)
 {
 	.tabPlusOnly { display: none !important; color: red; }

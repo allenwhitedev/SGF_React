@@ -112,6 +112,11 @@ class LoginControl extends Component
   		<div className="loginArea textCenter">
 
 	  		<img className="schoolLogo textCenter" src={fauLogo} alt="fauLogo" />
+        <h1 className="textCenter schoolName">
+          FAU <br />
+          <p className="numGroupsForSchool">12 groups</p>
+        </h1>
+
 	  		
         <section className="loginStateButtonsContainer"> 
           {signInButton} {signUpButton}
