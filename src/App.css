@@ -1,7 +1,20 @@
+/* roboto overrides */
+h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight: 300; }
+
 /* general stylings */
 .center { margin: auto;  }
 .flexCenter { display: flex; justify-content: center; align-items: center;  }
+.fullWidth { width: 100%; }
+.paddingRight10px { padding-right: 10px;  }
+.roboto { font-family: 'Roboto', sans-serif; }
 .textCenter { text-align: center; }
+.verticalAlignFlex { display: flex; align-items: center; }
+
+/* App Bar */
+.appBar { color: #fff; background-color: #41b097; height: 56px; padding: 0px 20px;}
+.navItems { margin-left: auto; }
+.navItems > a > i { font-size: 28px;  }
+.logo { height: 45px !important; width: 45px !important; font-size: 10px; }
 
 /* Login */
 .activeLoginState { border: 3px solid blue;  }

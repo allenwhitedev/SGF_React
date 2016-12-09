@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import logo from './logo.svg'
+import logo from './img/sgfLogo.png'
 // import LoginControl from './components/LoginControl.js'
 // import CourseSelection from './components/CourseSelection.js'
 import User from './components/User.js'
@@ -20,6 +20,20 @@ class App extends Component
   {
     return (
       <div className="appBody">
+  
+
+        <header className="appBar verticalAlignFlex"> 
+          <h1 className="verticalAlignFlex"> <img className="logo paddingRight10px" src={logo} alt="logo"/> Study Group Finder</h1> 
+          <nav className="navItems"> 
+            <a className="right"> 
+              <i className="material-icons">more_vert</i> 
+            </a> 
+          </nav>
+
+        </header>
+
+
+        <h2> Face <i className="material-icons">&#xE87C;</i> </h2>
         {/* <header className="textCenter">
           <h1 className="textCenter">SGF React</h1>
           <img className="logo" src={logo} alt="logo" />
