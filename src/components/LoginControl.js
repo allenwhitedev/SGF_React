@@ -1,8 +1,28 @@
 import React, { Component } from 'react'
-import SignIn from './SignIn.js'
-import SignUp from './SignUp.js'
+import SignInForm from './SignInForm.js'
+import SignUpForm from './SignUpForm.js'
 import fauLogo from '../img/logo.svg'
 import CourseSelection from './CourseSelection'
+
+import { browserHistory } from 'react-router'
+
+class TestComponent extends Component
+{
+  constructor(props)
+  {
+    super(props)
+
+    console.log("this.props.testProp", this.props.testProp)
+  }
+
+  render()
+  {
+    return (
+        <h1 className="textCenter" onClick={this.props.onClickListenerThing}>Test Component {this.props.testProp}</h1>
+    )
+  }
+
+}
 
 class LoginControl extends Component
 {
@@ -12,23 +32,43 @@ class LoginControl extends Component
 
 		this.handleSignUpClick = this.handleSignUpClick.bind(this)
     this.handleSignInClick = this.handleSignInClick.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+
+    this.parentClickHandler = this.parentClickHandler.bind(this)
+    
+    this.handleChildClick = this.handleChildClick.bind(this)
 
     this.state = { isSignInState: true, isLoggedIn: false}
 	}
 
+  handleFormSubmit(event)
+  {
+    event.preventDefault()
+    console.log("Handle Form Submit")
+  }
+
+  handleChildClick()
+  {
+    console.log("handle child click")
+  }
+
 	handleSignInClick()
   {
     if ( this.state.isSignInState !== true)
-    {
       this.setState({ isSignInState: true })
-
-    }
   }
 
   handleSignUpClick()
   {
     if (this.state.isSignInState === true)
       this.setState({ isSignInState: false })
+  }
+
+  parentClickHandler(event, username)
+  {
+    event.preventDefault()
+    console.log("parentClickHandler!")
+    browserHistory.push('CourseSelection')
   }
 
 
@@ -45,19 +85,19 @@ class LoginControl extends Component
 
   	if ( isSignInState === true ) // render Sign In Form
   	{
-  		loginForm = <SignInForm />
+  		loginForm = <SignInForm onSubmit={this.parentClickHandler} testProp={this.parentClickHandler}/>
 
   		signInButton = <button className="loginStateButton activeLoginState">
-  			SIGN UP <br/> <div className="activeDot textCenter"> </div>
+  			SIGN IN <br/> <div className="activeDot textCenter"> </div>
 	  	</button>
 
   		signUpButton = <button className="loginStateButton" onClick={this.handleSignUpClick}>
-  		  SIGN IN
+  		  SIGN UP
 	  	</button>
   	}
   	else // render Sign Up form
   	{
-  		loginForm = <SignUpForm />
+  		loginForm = <SignUpForm onSubmit={this.parentClickHandler} />
 
   		signInButton = <button className="loginStateButton" onClick={this.handleSignInClick}>
   			SIGN IN
@@ -85,18 +125,8 @@ class LoginControl extends Component
 
 }
 
-function SignInForm(props)
-{
-	return (
-		<SignIn />
-	)
-}
 
-function SignUpForm(props)
-{
-	return (
-		<SignUp />
-	)
-}
+
+
 
 export default LoginControl

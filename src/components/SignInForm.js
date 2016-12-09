@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-class SignIn extends Component
+class SignInForm extends Component
 {
 
   constructor(props)
@@ -13,7 +13,6 @@ class SignIn extends Component
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangePassword = this.handleChangePassword.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
-    this.handleSubmitForm = this.handleSubmitForm.bind(this)
   }
 
   handleBlur(iconId)
@@ -47,15 +46,10 @@ class SignIn extends Component
   }
 
 
-  handleSubmitForm(event)
-  {
-    alert("Submit login, assuming for now login was successful")
-  }
-
   render()
   {
     return (
-      <form className="loginForm" onSubmit={this.handleSubmitForm} id="signIn">
+      <form className="loginForm" onSubmit={this.props.onSubmit} id="signIn">
           
           <section className="inputArea"> 
             <i className={"material-icons inputIcon " + this.state.emailIcon}>email</i> 
@@ -75,4 +69,4 @@ class SignIn extends Component
 
 }
 
-export default SignIn;
+export default SignInForm;

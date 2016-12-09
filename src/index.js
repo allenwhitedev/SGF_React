@@ -7,8 +7,8 @@ import LoginControl from './components/LoginControl.js'
 import CourseSelection from './components/CourseSelection.js'
 import Groups from './components/Groups.js'
 import User from './components/User.js'
-import SignUp from './components/SignUp.js'
-import SignIn from './components/SignIn.js'
+import SignUpForm from './components/SignUpForm.js'
+import SignInForm from './components/SignInForm.js'
 
 import { Router, Route, Link, browserHistory } from 'react-router'
 
@@ -19,8 +19,10 @@ ReactDOM.render(
       <Route path="groups" component={Groups} />
       
       <Route path="login" component={LoginControl} >
-        <Route path="signup" component={SignUp} />
-      	<Route path="signin" component={SignIn} />
+    {/* 
+        <Route path="signup" component={SignUpForm} />
+      	<Route path="signin" component={SignInForm} />
+    */}    
         <Route path="/user/:userId" component={User}/>
       </Route>
 

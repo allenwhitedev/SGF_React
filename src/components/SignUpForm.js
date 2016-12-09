@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-class SignUp extends Component{
+class SignUpForm extends Component{
   constructor(props)
   {
     super(props)
@@ -58,7 +58,7 @@ class SignUp extends Component{
   render()
   {
     return (
-      <form className="loginForm" onSubmit={this.handleSubmitForm} id="signIn">
+      <form className="loginForm" onSubmit={this.props.onSubmit} id="signIn">
         <section className="inputArea"> 
           <i className={"material-icons inputIcon " + this.state.accountCircleIcon }>account_circle</i> 
           <input value={this.state.name} onChange={this.handleChangeName} onFocus={() => this.handleFocus("account_circle")} onBlur={() => this.handleBlur("account_circle")} type="text" name="name" placeholder="name"/><br/>
@@ -80,4 +80,4 @@ class SignUp extends Component{
   }
 }
 
-export default SignUp;
+export default SignUpForm;

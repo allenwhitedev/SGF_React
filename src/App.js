@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import logo from './img/sgfLogo.png'
-import LoginControl from './components/LoginControl.js'
+//import LoginControl from './components/LoginControl.js'
 
-import CourseSelection from './components/CourseSelection'
-import Groups from './components/Groups'
+//import CourseSelection from './components/CourseSelection'
+//import Groups from './components/Groups'
 
-import { Router, Route, Link, browserHistory } from 'react-router'
+//import { Router, Route, Link, browserHistory } from 'react-router'
 
 import './App.css'
 
@@ -15,7 +15,7 @@ class App extends Component
   {
     super(props)
 
-    this.state = { appCreatedAt: new Date() }
+    this.state = { appCreatedAt: new Date(), isLoggedIn: false }
   }
 
   render() // appBody encapsulates all react-generated html
