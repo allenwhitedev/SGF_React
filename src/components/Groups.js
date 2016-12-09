@@ -6,6 +6,9 @@ import gravatar3 from '../img/gravatar3.png'
 import gravatar4 from '../img/gravatar4.png'
 import gravatar5 from '../img/gravatar5.png'
 
+//import { Link } from 'react-router'
+import { Router, Route, Link, browserHistory } from 'react-router'
+
 class Groups extends Component
 {
 
@@ -114,7 +117,9 @@ class Groups extends Component
     let tmpGroups = this.state.myGroups
     let tmpGroupsHere = this.state.groupsHere
     
-    tmpGroupsHere[name.index].members.push("basidjfkdkdf")
+    // insert user if they are not already in the group
+    if ( tmpGroupsHere[name.index].members.indexOf("basidjfkdkdf") === -1 )
+      tmpGroupsHere[name.index].members.push("basidjfkdkdf")
 
     console.log("tmpGroupsHere", tmpGroupsHere)
     
@@ -207,8 +212,10 @@ class Groups extends Component
     let groupsDisplay = this.state.groupsHere.map((dummyGroups,index) =>
       <li key={index} className="group boxShadow1" id={index} onClick={ () => this.handleClickGroup({name: dummyGroups.name, class: dummyGroups.class, index: index}) }>
         <section className="groupTextInfo"> 
+          <Link to={"groups/" + dummyGroups.name} params={ {groupName: dummyGroups.name} }>
           <h2 className="groupName verticalAlignFlex"> <img className="gravatarSmall marginRight10px" src={this.getGravatar(dummyGroups.gravatar)} alt=""/> <span> {dummyGroups.name} - {dummyGroups.class} </span> </h2>
           <h3>{dummyGroups.description}</h3>
+          </Link>
         </section>
 
         <ul className="groupInfo tabPlusOnly fullWidth flexHorizontalLayout" id="">

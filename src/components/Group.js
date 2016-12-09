@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-class User extends Component
+class Group extends Component
 {
   constructor(props)
   {
     super(props)
 
-    this.state = {gravitar: "", reminders: [], }
+    this.state = {mGroupName: this.props.groupName, reminders: [], }
   }
 
   render()
@@ -56,7 +56,7 @@ class User extends Component
 
     return(
       <div>
-        <h2>{this.props.params.userId}</h2>
+        <h2>Group {this.props.params.groupName}</h2>
 
         {user.gravitar}<br/>
         <div>
@@ -89,4 +89,4 @@ function abbreviateString(stringToBeAbbreviated)
     return abbreviatedString
 }
 
-export default User
+export default Group

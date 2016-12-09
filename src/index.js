@@ -9,6 +9,7 @@ import Groups from './components/Groups.js'
 import User from './components/User.js'
 import SignUpForm from './components/SignUpForm.js'
 import SignInForm from './components/SignInForm.js'
+import Group from './components/Group.js'
 
 import { Router, Route, Link, browserHistory } from 'react-router'
 
@@ -23,9 +24,9 @@ ReactDOM.render(
         <Route path="signup" component={SignUpForm} />
       	<Route path="signin" component={SignInForm} />
     */}    
-        <Route path="/user/:userId" component={User}/>
       </Route>
-
+      <Route name="group" path="/groups/:groupName" component={Group} />
+      <Route path="/users/:userId" component={User} />
     </Route>
   </Router>,
   document.getElementById('root')

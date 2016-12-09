@@ -69,6 +69,7 @@ li { list-style: none }/* list style override */
 	width: 90%; max-width: 800px; margin: 20px auto ; border-radius: 2px;
 }
 .groupTextInfo { padding: 5px 20px; }
+.groupTextInfo > * { text-decoration: none;  }
 .groupName { margin: 5px auto;  vertical-align: middle; }
 .groupInfo 
 { 
