@@ -2,7 +2,13 @@
 h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight: 300; }
 
 /* general stylings */
+.activeFont { color: #41b097 !important;  }
 .center { margin: auto;  }
+.defaultButton 
+{ 
+	background-color: #41b097; border: none; font-size: 1.5rem; color: #fff; 
+	border-radius: 3px; font-weight: 300; padding : 8px 100px; 
+}
 .flexCenter { display: flex; justify-content: center; align-items: center;  }
 .fullWidth { width: 100%; }
 .paddingRight10px { padding-right: 10px;  }
@@ -10,11 +16,13 @@ h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight
 .textCenter { text-align: center; }
 .verticalAlignFlex { display: flex; align-items: center; }
 
+
 /* App Bar */
 .appBar { color: #fff; background-color: #41b097; height: 56px; padding: 0px 20px;}
 .navItems { margin-left: auto; }
 .navItems > a > i { font-size: 28px;  }
 .logo { height: 45px !important; width: 45px !important; font-size: 10px; }
+
 
 /* Login */
 .activeDot 
@@ -25,6 +33,16 @@ h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight
 .loginStateButton 
 	{ font-size: 1.75rem; background-color: transparent; border: none; color: #757575;}
 .loginStateButtonsContainer { margin-bottom: 40px; }
+.inputArea > input 
+{ 
+	border: none; border-bottom: 2px solid #848484; background-color: transparent; outline: none;  
+	margin: 12px 10px; font-size: 1.5rem; color: #848484; padding-left: 5px;
+}
+.inputArea > input::-webkit-input-placeholder { color: #bdbdbd; }
+.inputArea > input:focus { border-bottom-color: #41b097;  }
+.inputIcon 
+	{ color: #848484; font-size: 40px; vertical-align: middle; transform: translateY(-3px); }
+
 
 /* Course Selection */
 .newCourseInput 

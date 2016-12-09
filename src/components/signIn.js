@@ -7,11 +7,23 @@ class SignIn extends Component
   {
     super(props)
 
-    this.state = { username: "", password: "" }
+    this.state = { username: "", password: ""}
 
+    this.handleBlur = this.handleBlur.bind(this)
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangePassword = this.handleChangePassword.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
     this.handleSubmitForm = this.handleSubmitForm.bind(this)
+  }
+
+  handleBlur(iconId)
+  {
+    if (iconId === "account_circle")
+      this.setState({accountCircleIcon: ""})
+    else if (iconId === "email")
+      this.setState({emailIcon: ""})
+    else if (iconId === "lock")
+      this.setState({lockIcon: ""})
   }
 
   handleChangeName(event)
@@ -24,6 +36,17 @@ class SignIn extends Component
     this.setState({password: event.target.value})
   }
 
+  handleFocus(iconId)
+  {
+    if (iconId === "account_circle")
+      this.setState({accountCircleIcon: "activeFont"})
+    else if (iconId === "email")
+      this.setState({emailIcon: "activeFont"})
+    else if (iconId === "lock")
+      this.setState({lockIcon: "activeFont"})
+  }
+
+
   handleSubmitForm(event)
   {
     alert("Submit login, assuming for now login was successful")
@@ -32,16 +55,20 @@ class SignIn extends Component
   render()
   {
     return (
-      <form onSubmit={this.handleSubmitForm} id="signIn">
-        <div>
-          <input value={this.state.username} onChange={this.handleChangeName} type="text" name="username" placeholder="email/username"/><br/>
-          <input value={this.state.password} onChange={this.handleChangePassword} type="password" name="password" placeholder="password"/>
-        </div>
-        <div>
-          <button>
-            Sign In
-          </button>
-        </div>
+      <form className="loginForm" onSubmit={this.handleSubmitForm} id="signIn">
+          
+          <section className="inputArea"> 
+            <i className={"material-icons inputIcon " + this.state.emailIcon}>email</i> 
+            <input value={this.state.username} onChange={this.handleChangeName} onFocus={() => this.handleFocus("email")} onBlur={() => this.handleBlur("email")} type="text" name="username" placeholder="email/username"/><br/>
+          </section>
+
+          <section className="inputArea">
+          <i className={"material-icons inputIcon " + this.state.lockIcon} id="lock">lock</i>  
+          <input value={this.state.password} onChange={this.handleChangePassword} onFocus={() => this.handleFocus("lock")} onBlur={() => this.handleBlur("lock")} type="password" name="password" placeholder="password"/>
+          </section>
+
+          <br /> <br />
+          <button className="defaultButton"> SUBMIT </button>
       </form>
     )
   }
