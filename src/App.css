@@ -78,11 +78,25 @@ li { list-style: none }/* list style override */
 }
 .groupInfo > li { margin: auto 10px; }
 
+/* Sidebar */
+.myGroups {padding: 0;}
+.profileGravatar {height: 100px; width: 100px; border-radius: 3px;}
+.sidebar 
+{ 
+	position: absolute; top: 56px; background-color: #41b097; height: 140%; width: 300px; 
+	color: #424242;
+}
+
 /* Desktop/Large Tablet  */
 @media (min-width: 800px)
 {
 	.groupsButton { width: 60%; max-width: 600px; }
 
+}
+
+@media (max-width: 1420px)
+{
+	.sidebar { display: none; }
 }
 
 
