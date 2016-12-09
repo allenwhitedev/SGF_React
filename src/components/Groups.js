@@ -2,27 +2,11 @@ import React, { Component } from 'react'
 
 class Groups extends Component
 {
-  constructor(props)
-	{
-		super(props)
-
-    this.state = {groups: ""}
-	}
-
-  groupSearch(event)
-  {
-    // YTSearch({
-    //     key: API_KEY, term: term }, (videos) => {
-    //     this.setState({
-    //         videos: videos,
-    //         selectedVideo: videos[0]
-    //     });
-    // });
-  }
 
   render()
   {
-    let userGroups =     [
+
+    let dummyGroups = [
       {
         _id: "a83jgdfsdf",
         "name": "Super Studiers",
@@ -47,21 +31,22 @@ class Groups extends Component
       }
     ]
 
-    let userGroupDisplay = userGroups.map( (userGroups, index) =>
-      <li key={index} className="userGroups">
-        <h1>{userGroups.name}</h1>
-        <p>{userGroups.members.length} members</p>
-      </li>
+    let groupsDisplay = dummyGroups.map((dummyGroups,index) =>
+      <div key={index} className="group-searched">
+        {dummyGroups.name}<br/>
+        <section>
+          <img src='http://image.flaticon.com/icons/png/512/27/27825.png' alt="" height="15" width="15"/> {dummyGroups.members.length} members<br/>
+          {dummyGroups.meetingTimes}<br/>
+          {dummyGroups.locationName}<br/>
+        </section>
+      </div>
     )
 
     return(
-      <section className="courseSelection">
-
-        {/* Searched Group Display */}
-        <ul className="groups textCenter"> {userGroupDisplay} </ul>
-
-        {/* Display User Info component */}
-      </section>
+      <div>
+        {groupsDisplay}
+      </div>
+      // Groups Display
     )
   }
 }

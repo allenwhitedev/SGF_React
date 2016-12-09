@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import logo from './img/sgfLogo.png'
-//import LoginControl from './components/LoginControl.js'
 
-//import CourseSelection from './components/CourseSelection'
-//import Groups from './components/Groups'
-
-//import { Router, Route, Link, browserHistory } from 'react-router'
-
+import CourseSelection from './components/CourseSelection.js'
 import './App.css'
 
 class App extends Component
@@ -22,7 +17,7 @@ class App extends Component
   {
     return (
       <div className="appBody">
-  
+ 
         {/* App Bar */}
         <header className="appBar verticalAlignFlex"> 
           <h1 className="verticalAlignFlex"> 
@@ -39,6 +34,11 @@ class App extends Component
 
       {/* Login Page */}
       {/* <LoginControl /> */}
+
+        <header className="textCenter">
+          <h1 className="textCenter">SGF React</h1>
+          <img className="logo" src={logo} alt="logo" />
+        </header>
       </div>
     )
   }
