@@ -15,7 +15,10 @@ li { list-style: none }/* list style override */
 }
 .disabled { background-color: #BDBDBD; }
 .flexCenter { display: flex; justify-content: center; align-items: center;  }
+.flexHorizontalLayout { display: flex; align-items: center; flex-direction: row; justify-content: space-between; }
 .fullWidth { width: 100%; }
+.gravatarSmall { height: 40px; width: 40px; border-radius: 3px;}
+.marginRight10px { margin-right: 10px;  }
 .paddingRight10px { padding-right: 10px;  }
 .roboto { font-family: 'Roboto', sans-serif; }
 .textCenter { text-align: center; }
@@ -58,10 +61,28 @@ li { list-style: none }/* list style override */
 .submitButtonArea { position: absolute; bottom: 60px; }
 .groupsButton > a { color: #fff; text-decoration: none; }
 
+/* Groups Page */
+.groups { padding: 10px; }
+.group 
+{ 
+	background-color: #fff; padding: 0; border: 1px solid #ebebeb; margin-bottom: 20px; 
+	width: 90%; max-width: 800px; margin: 20px auto ; border-radius: 2px;
+}
+.groupTextInfo { padding: 5px 20px; }
+.groupName { margin: 5px auto;  vertical-align: middle; }
+.groupInfo 
+{ 
+	padding: 12px 0px; background-color: #41b097; transform: translate(-1px, 1px); 
+	border-right: 1px solid #41b097; border-left: 1px solid #41b097; color: #fff; 
+	font-size: 1.4rem; font-weight: 300; border-radius: 2px;
+}
+.groupInfo > li { margin: auto 10px; }
+
 /* Desktop/Large Tablet  */
 @media (min-width: 800px)
 {
-	.groupsButton { width: 60%; max-width: 600px;  }	
+	.groupsButton { width: 60%; max-width: 600px; }
+
 }
 
 
