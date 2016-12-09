@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 class CourseSelection extends Component
 {
   constructor(props)
-	{
-		super(props)
+  {
+    super(props)
 
-	  this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleOnChange = this.handleOnChange.bind(this)
     this.handleOnSubmit = this.handleOnSubmit.bind(this)
     this.handleOnRemove = this.handleOnRemove.bind(this)
     this.handleSubmitCourses = this.handleSubmitCourses.bind(this)
@@ -38,7 +38,7 @@ class CourseSelection extends Component
     ]
 
     this.state = {courses: [], newCourse: "", groups: myGroups}
-	}
+  }
 
   handleSubmitCourses(event)
   {
