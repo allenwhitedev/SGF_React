@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SignIn from './SignIn.js'
 import SignUp from './SignUp.js'
+import fauLogo from '../img/logo.svg'
 
 class LoginControl extends Component
 {
@@ -41,11 +42,11 @@ class LoginControl extends Component
   		loginForm = <SignInForm />
 
   		signInButton = <button className="loginStateButton activeLoginState">
-  			Sign In
+  			SIGN UP <br/> <div className="activeDot textCenter"> </div>
 	  	</button>
 
   		signUpButton = <button className="loginStateButton" onClick={this.handleSignUpClick}>
-  		  Sign Up
+  		  SIGN IN
 	  	</button>
   	}
   	else // render Sign Up form
@@ -53,20 +54,24 @@ class LoginControl extends Component
   		loginForm = <SignUpForm />
 
   		signInButton = <button className="loginStateButton" onClick={this.handleSignInClick}>
-  			Sign In
+  			SIGN IN
 	  	</button>
 
   		signUpButton = <button className="loginStateButton activeLoginState">
-		  	Sign Up
+		  	SIGN UP <br/> <div className="activeDot textCenter"> </div>
   		</button>
   	}
 
   	return (
   		<div className="loginArea textCenter">
 
-	  		<h1>Login Control</h1>
-	  		{signInButton} {signUpButton}
-  			{loginForm}
+	  		<img className="schoolLogo textCenter" src={fauLogo} alt="fauLogo" />
+	  		
+        <section className="loginStateButtonsContainer"> 
+          {signInButton} {signUpButton}
+  			</section>
+
+        {loginForm}
 
   		</div>
   	)
