@@ -73,7 +73,7 @@ class CourseSelection extends Component
     (this.state.courses.length > 0)
     ? // true
       submitButton = <button className="groupsButton textCenter defaultButton boxShadow2">
-        <Link to="/"> Go To Groups </Link>
+        <Link to="/groups"> Go To Groups </Link>
       </button>
     : // false
       submitButton = <button className="groupsButton textCenter defaultButton boxShadow2 disabled" disabled="true" onSubmit={this.handleSubmitCourses}>

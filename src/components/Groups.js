@@ -219,6 +219,7 @@ class Groups extends Component
     let myGroups = this.state.myGroups.map( (myGroup, index) =>
       <li key={index} className="myGroup textCenter">
         {myGroup.name} ({myGroup.class})
+        <br />
       </li>
     )
 

@@ -80,6 +80,7 @@ li { list-style: none }/* list style override */
 
 /* Sidebar */
 .myGroups {padding: 0;}
+.myGroup { margin-top: 10px !important;  }
 .profileGravatar {height: 100px; width: 100px; border-radius: 3px;}
 .sidebar 
 { 

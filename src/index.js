@@ -14,11 +14,11 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 
 ReactDOM.render(
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
+    <Route component={App}>
       <Route path="courseSelection" component={CourseSelection}/>
       <Route path="groups" component={Groups} />
       
-      <Route path="login" component={LoginControl} >
+      <Route path="/" component={LoginControl} >
     {/* 
         <Route path="signup" component={SignUpForm} />
       	<Route path="signin" component={SignInForm} />
