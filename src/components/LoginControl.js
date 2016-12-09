@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SignIn from './SignIn.js'
 import SignUp from './SignUp.js'
 import fauLogo from '../img/logo.svg'
+import CourseSelection from './CourseSelection'
 
 class LoginControl extends Component
 {
@@ -12,7 +13,7 @@ class LoginControl extends Component
 		this.handleSignUpClick = this.handleSignUpClick.bind(this)
     this.handleSignInClick = this.handleSignInClick.bind(this)
 
-    this.state = { isSignInState: true}
+    this.state = { isSignInState: true, isLoggedIn: false}
 	}
 
 	handleSignInClick()
@@ -33,6 +34,11 @@ class LoginControl extends Component
 
   render()
   {
+    if (this.state.isLoggedIn)
+      return (
+        <CourseSelection />
+      )
+
   	let isSignInState = this.state.isSignInState
 
   	let loginForm = null; let signInButton = null; let signUpButton = null;

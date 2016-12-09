@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import logo from './img/sgfLogo.png'
 import LoginControl from './components/LoginControl.js'
-// import CourseSelection from './components/CourseSelection.js'
-//import User from './components/User.js'
-// import Groups from './components/Groups.js'
-// import SearchBar from './components/SearchBar.js'
+
+import CourseSelection from './components/CourseSelection'
+import Groups from './components/Groups'
+
+import { Router, Route, Link, browserHistory } from 'react-router'
+
 import './App.css'
 
 class App extends Component
@@ -33,9 +35,10 @@ class App extends Component
             </a> 
           </nav>
         </header>
+        {this.props.children}
 
       {/* Login Page */}
-      <LoginControl />
+      {/* <LoginControl /> */}
       </div>
     )
   }
