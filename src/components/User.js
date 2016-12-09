@@ -16,7 +16,8 @@ class User extends Component
       "name": "JohnnyB12",
       password: "password1234",
       gravatar: "gravatar2",
-      createdAt: "ISODate(2016-11-26T00:32:48.745Z)"
+      createdAt: "ISODate(2016-11-26T00:32:48.745Z)",
+      reminders: ["Most Valuable Codes Exam Review"]
     }
 
     let userGroups = [
@@ -44,12 +45,12 @@ class User extends Component
       }
     ]
 
-    let userReminders = <div>Most Valuable Code Exam Review</div>
+    let userReminders = user.reminders
 
     let userGroupDisplay = userGroups.map( (userGroups, index) =>
       <div key={index} className="userGroups">
         <div>{abbreviateString(userGroups.name)}</div>
-        <div>{userGroups.members.length} members</div>
+        <div>{userGroups.members.length} Members</div>
       </div>
     )
 

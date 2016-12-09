@@ -10,7 +10,7 @@ class CourseSelection extends Component
     this.handleOnSubmit = this.handleOnSubmit.bind(this)
     this.handleOnRemove = this.handleOnRemove.bind(this)
     this.handleSubmitCourses = this.handleSubmitCourses.bind(this)
-    
+
     let myGroups =
     [
       {
@@ -22,7 +22,7 @@ class CourseSelection extends Component
         location: ["lat": 33.556828283, "lng": -77.596928386],
         gravatar: "gravatar3",
         lastActivityAt: "ISODate(2016-11-26T00:32:48.745Z)",
-        createdAt: "ISODate(2016-11-26T00:32:48.745Z)" 
+        createdAt: "ISODate(2016-11-26T00:32:48.745Z)"
       },
       {
       _id: "b2j5k3k4j3",
@@ -33,7 +33,7 @@ class CourseSelection extends Component
       location: ["lat": 33.556828283, "lng": -77.596928386],
       gravatar: "gravatar3",
       lastActivityAt: "ISODate(2016-15-26T00:32:48.745Z)",
-      createdAt: "ISODate(2016-10-22T00:32:48.745Z)" 
+      createdAt: "ISODate(2016-10-22T00:32:48.745Z)"
       }
     ]
 
@@ -49,7 +49,7 @@ class CourseSelection extends Component
   {
     let index = event.target.id
     this.state.courses.splice(index, 1);
-    this.setState(this.state); 
+    this.setState(this.state);
   }
 
   handleOnChange(event)
@@ -79,6 +79,10 @@ class CourseSelection extends Component
         Take Me To Groups
       </button>
 
+    submitButton = <button className="submitButton textCenter">
+      Take Me To Groups
+    </button>
+
     let courses = this.state.courses
 
     // course is object currently being mapped, index is position of current object in its array
@@ -89,20 +93,9 @@ class CourseSelection extends Component
       </li>
     )
 
-    let groups = this.state.groups
-    
-    let groupsDisplay = groups.map( (group, index) =>
-      <li key={index} className="group">
-        {group.name}
-      </li>
-
-    )
 
     return(
       <section className="courseSelection">
-
-        {/* Groups Display */}
-        <ul className="groups textCenter"> {groupsDisplay} </ul>
 
         {/* Courses Display */}
         <ul className="courses textCenter"> {coursesDisplay} </ul>
