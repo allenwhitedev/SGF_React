@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import logo from './img/sgfLogo.png'
-
-import CourseSelection from './components/CourseSelection.js'
 import AppBar from './components/AppBar.js'
 import './App.css'
 
@@ -17,12 +14,14 @@ class App extends Component
   render() // appBody encapsulates all react-generated html
   {
     return (
-      <div className="appBody">
-                
-        {this.props.children}
-
-      {/* Login Page */}
-      {/* <LoginControl /> */}
+      <div className="appRoot">
+        <div className="appBody">
+          {/* App Bar */}
+          <AppBar />
+          
+          {/* Nested routes */}        
+          {this.props.children}
+        </div>
       </div>
     )
   }

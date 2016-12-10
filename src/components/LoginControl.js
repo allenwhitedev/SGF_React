@@ -6,24 +6,6 @@ import CourseSelection from './CourseSelection'
 
 import { browserHistory } from 'react-router'
 
-class TestComponent extends Component
-{
-  constructor(props)
-  {
-    super(props)
-
-    console.log("this.props.testProp", this.props.testProp)
-  }
-
-  render()
-  {
-    return (
-        <h1 className="textCenter" onClick={this.props.onClickListenerThing}>Test Component {this.props.testProp}</h1>
-    )
-  }
-
-}
-
 class LoginControl extends Component
 {
 	constructor(props)

@@ -113,12 +113,11 @@ class Group extends Component
     return(
       <div>
 
-        <h1 className="textCenter">{this.props.params.groupName}</h1>
-        
+        {/* Sidebar */}
         <section className="sidebar textCenter">
           <br />
-          <h1 className="textCenter sidebarTitle">{group.name}</h1>
-          <img className="profileGravatar" src={this.getGravatar(group.gravatar)} />
+          <h1 className="textCenter sidebarTitle">{ abbreviateString(group.name) }</h1>
+          <img className="profileGravatar" src={this.getGravatar(group.gravatar)} alt="{group.name}" />
 
           <h2 className="textCenter"><strong>Reminders</strong></h2>   
             <h4 className="reminder">No Reminders For {group.name}</h4>
@@ -129,6 +128,11 @@ class Group extends Component
           </ul>
         </section>
 
+        {/* Main */}
+        <main className="sidebarMain textCenter">
+           <h1 className="">{this.props.params.groupName}</h1>
+        </main>
+
       </div>
     )
   }
@@ -137,6 +141,8 @@ class Group extends Component
 
 function abbreviateString(stringToBeAbbreviated)
 {
+  if (stringToBeAbbreviated.length > 15)
+  {
     let abbreviatedString = ""
 
     abbreviatedString += stringToBeAbbreviated[0]
@@ -147,6 +153,9 @@ function abbreviateString(stringToBeAbbreviated)
             abbreviatedString += stringToBeAbbreviated[i + 1]
 
     return abbreviatedString
+  }
+  else // string is not too long, do not abbreviate
+    return stringToBeAbbreviated
 }
 
 export default Group

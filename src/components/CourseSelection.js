@@ -79,11 +79,6 @@ class CourseSelection extends Component
       submitButton = <button className="groupsButton textCenter defaultButton boxShadow2 disabled" disabled="true" onSubmit={this.handleSubmitCourses}>
         Go To Groups
       </button>
-    {/*
-    submitButton = <button className="groupsButton textCenter defaultButton boxShadow2">
-      Go To Groups
-    </button>
-    */}
 
     let courses = this.state.courses
 
