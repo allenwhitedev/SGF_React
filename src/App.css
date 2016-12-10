@@ -85,20 +85,26 @@ li { list-style: none }/* list style override */
 .profileGravatar {height: 100px; width: 100px; border-radius: 3px;}
 .sidebar 
 { 
-	position: absolute; top: 56px; background-color: #41b097; height: 140%; width: 300px; 
+	position: absolute; top: 64px; background-color: #41b097; height: 140%; width: 300px; 
 	color: #424242;
 }
+.sidebarTitle { font-size: 2rem;  }
 
 /* Desktop/Large Tablet  */
 @media (min-width: 800px)
 {
 	.groupsButton { width: 60%; max-width: 600px; }
-
+	.appBar { height: 64px;  }
 }
 
-@media (max-width: 1420px)
+@media (max-width: 1420px) /* Non-desktop only */
 {
 	.sidebar { display: none; }
+}
+@media (min-width: 1420px) /* Desktop Only */
+{
+	.sidebar { top: 0px; }
+	.hideOnDesktop { display: none; }
 }
 
 

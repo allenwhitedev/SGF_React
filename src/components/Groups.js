@@ -241,7 +241,8 @@ class Groups extends Component
       <div>
         {/* Sidebar */}
         <section className="sidebar textCenter">
-          <br /><br />
+          <br />
+          <h1 className="textCenter sidebarTitle">Brandon34</h1>
           <img className="profileGravatar" src={gravatar1} />
 
           <h2 className="textCenter"><strong>Reminders</strong></h2>   
