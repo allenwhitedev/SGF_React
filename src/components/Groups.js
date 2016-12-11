@@ -156,7 +156,7 @@ class Groups extends Component
           <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {dummyGroups.meetingTimes} </li>
           <li className="locationName verticalAlignFlex"> 
             <i className="material-icons">place</i> &nbsp;
-            <span> {dummyGroups.locationName} </span> 
+            <span className="whiteText"> {dummyGroups.locationName} </span> 
           </li>
         </ul>
       </li>
@@ -178,10 +178,10 @@ class Groups extends Component
           <h1 className="textCenter sidebarTitle">Brandon34</h1>
           <img className="profileGravatar" src={gravatar1} alt="User" />
 
-          <h2 className="textCenter"><strong>Reminders</strong></h2>   
+          <h2 className="textCenter">Reminders</h2>   
             <h4 className="reminder">No Reminders At This Time</h4>
           
-          <h2 className="textCenter"><strong>My Groups</strong></h2> 
+          <h2 className="textCenter">My Groups</h2> 
           <ul className="myGroups">
             {myGroups}
           </ul>
@@ -191,7 +191,7 @@ class Groups extends Component
         <main className="sidebarMain">
           {/* Groups Display */}
           <ul className="groups">
-             <h1 className="textCenter">Groups </h1>
+             <h1 className="textCenter darkGreyText">Groups</h1>
               {groupsDisplay}
           </ul>
         </main>

@@ -1,5 +1,5 @@
 /* roboto overrides */
-h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight: 300; }
+h1, h2, h3, h4, h5, h6, span, p { font-family: 'Roboto', sans-serif; font-weight: 400; color: #424242;}
 li { list-style: none }/* list style override */
 
 /* general stylings */
@@ -16,6 +16,7 @@ li { list-style: none }/* list style override */
 .disabled { background-color: #BDBDBD; }
 .flexCenter { display: flex; justify-content: center; align-items: center;  }
 .flexHorizontalLayout { display: flex; align-items: center; flex-direction: row; justify-content: space-between; }
+.fontSize32px { font-size: 32px;  }
 .fullWidth { width: 100%; }
 .gravatarSmall { height: 40px; width: 40px; border-radius: 3px;}
 .marginRight10px { margin-right: 10px;  }
@@ -23,6 +24,7 @@ li { list-style: none }/* list style override */
 .roboto { font-family: 'Roboto', sans-serif; }
 .textCenter { text-align: center; }
 .verticalAlignFlex { display: flex; align-items: center; }
+.whiteText { color: rgba(255,255,255,.9);  }
 
 
 /* App Bar */
@@ -45,7 +47,7 @@ li { list-style: none }/* list style override */
 .inputArea > input 
 { 
 	border: none; border-bottom: 2px solid #848484; background-color: transparent; outline: none;  
-	margin: 12px 10px; font-size: 1.5rem; color: #848484; padding-left: 5px;
+	margin: 12px 10px; font-size: 1.5rem; color: #424242; padding-left: 5px;
 	width: 60%; max-width: 600px;
 }
 .inputArea > input::-webkit-input-placeholder { color: #bdbdbd; }
@@ -55,7 +57,7 @@ li { list-style: none }/* list style override */
 .numGroupsForSchool { color: #9e9e9e; font-size: .9rem; margin: 2px 0 0 0; }
 
 /* Course Selection */
-.course { font-size: 1.5rem; margin: 20px auto; color: #848484; }
+.course { font-size: 1.5rem; margin: 20px auto; color: #424242; }
 .newCourseInput 
 	{ font-size: 1.25rem; border: none; border-bottom: 2px solid #BDBDBD; border-radius: 2px;  }
 .submitButtonArea { position: absolute; bottom: 60px; }
@@ -73,10 +75,11 @@ li { list-style: none }/* list style override */
 .groupName { margin: 5px auto;  vertical-align: middle; }
 .groupInfo 
 { 
-	padding: 12px 0px; background-color: #41b097; transform: translate(-1px, 1px); 
-	border-right: 1px solid #41b097; border-left: 1px solid #41b097; color: #fff; 
+	padding: 12px 0px; background-color: #009688; transform: translate(-1px, 1px); 
+	border-right: 1px solid #41b097; border-left: 1px solid #41b097; color: rgba(255,255,255,.9); 
 	font-size: 1.4rem; font-weight: 300; border-radius: 2px;
 }
+.groupInfo i { font-size: 2.25rem;  }
 .groupInfo > li { margin: auto 10px; }
 
 /* Sidebar */
@@ -85,9 +88,10 @@ li { list-style: none }/* list style override */
 .profileGravatar {height: 100px; width: 100px; border-radius: 3px;}
 .sidebar 
 { 
-	position: absolute; top: 64px; background-color: #41b097; height: 140%; width: 300px; 
-	color: #424242;
+	position: absolute; top: 64px; background-color: #00897B; height: 140%; width: 300px; 
+	font-weight: 300;
 }
+.sidebar > * { color: rgba(255,255,255,.9); }
 .sidebarTitle { font-size: 2rem;  }
 
 /* Desktop/Large Tablet  */

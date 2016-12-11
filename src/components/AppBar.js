@@ -9,7 +9,7 @@ class AppBar extends Component
 	    <header className="appBar verticalAlignFlex boxShadow1 hideOnDesktop"> 
 	      <h1 className="verticalAlignFlex"> 
 	        <img className="logo paddingRight10px" src={logo} alt="logo"/> 
-	        <span className="tabPlusOnly"> Study Group Finder </span>
+	        <span className="tabPlusOnly whiteText"> Study Group Finder </span>
 	      </h1> 
 	      <nav className="navItems"> 
 	        <a className="right"> 

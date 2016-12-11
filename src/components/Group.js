@@ -119,10 +119,10 @@ class Group extends Component
           <h1 className="textCenter sidebarTitle">{ abbreviateString(group.name) }</h1>
           <img className="profileGravatar" src={this.getGravatar(group.gravatar)} alt="{group.name}" />
 
-          <h2 className="textCenter"><strong>Reminders</strong></h2>   
+          <h2 className="textCenter">Reminders</h2>   
             <h4 className="reminder">No Reminders For {group.name}</h4>
           
-          <h2 className="textCenter"><strong>Members</strong></h2> 
+          <h2 className="textCenter">Members</h2> 
           <ul className="myGroups">
             {membersDisplay}
           </ul>
