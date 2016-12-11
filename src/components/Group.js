@@ -135,7 +135,7 @@ class Group extends Component
           <img className="profileGravatar" src={this.getGravatar(group.gravatar)} alt="{group.name}" />
 
           <h2 className="textCenter">Reminders</h2>   
-            <h4 className="reminder">No Reminders For {group.name}</h4>
+            <h4 className="reminder">No Reminders For {abbreviateString(group.name)}</h4>
           
           <h2 className="textCenter">Members</h2> 
           <ul className="groupMembers">
@@ -147,6 +147,12 @@ class Group extends Component
         <main className="sidebarMain textCenter">
            <h1 className="">Recent Activity</h1>
            <ul className="groupActions">{groupActionsDisplay}</ul>
+
+            <h1 className="">Meetup 1 <img src="//ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png" alt="gdoc"/></h1>
+             <h1 className="">Meetup 2</h1>
+
+              <h1 className="">Files</h1>
+               <h1 className="">Chat</h1>
         </main>
 
       </div>
