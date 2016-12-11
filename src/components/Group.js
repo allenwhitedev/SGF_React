@@ -16,6 +16,12 @@ class Group extends Component
     this.state = {mGroupName: this.props.groupName, reminders: [], }
   }
 
+  displayAction(action)
+  {
+    if (action.type === "join")
+      return <li> Return type from displayAction </li>
+  }
+
   getGravatar(gravatar)
   {
     if (gravatar === "gravatar1")
@@ -106,9 +112,18 @@ class Group extends Component
     let memberNames = ["Brandon", "Danh", "David", "Elizabeth", "Newil"]
     let members = null || group.members
     let membersDisplay = members.map( (member, index) => 
-      <li key={index}> {memberNames[index]}</li>  
+      <li key={index} className="groupMember"> {memberNames[index]}</li>  
     )
 
+    let groupActions = 
+    [
+    {type: "file", subtype: "doc", text: "Aly 33 shared studyGuide1.doc"}, 
+    {type: "meetup", text: "BillyT requested a meetup@ Tues 4:30pm"}, 
+    {type: "join", text: "Eli4fun joined Most Valuable Study"}
+    ]
+    let groupActionsDisplay = groupActions.map( (action, index) => 
+      <li key={index} className="action">{action.text}</li>
+    )
 
     return(
       <div>
@@ -123,14 +138,15 @@ class Group extends Component
             <h4 className="reminder">No Reminders For {group.name}</h4>
           
           <h2 className="textCenter">Members</h2> 
-          <ul className="myGroups">
+          <ul className="groupMembers">
             {membersDisplay}
           </ul>
         </section>
 
         {/* Main */}
         <main className="sidebarMain textCenter">
-           <h1 className="">{this.props.params.groupName}</h1>
+           <h1 className="">Recent Activity</h1>
+           <ul className="groupActions">{groupActionsDisplay}</ul>
         </main>
 
       </div>

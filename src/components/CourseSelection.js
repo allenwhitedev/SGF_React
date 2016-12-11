@@ -49,6 +49,7 @@ class CourseSelection extends Component
   handleOnRemove(event)
   {
     let index = event.target.id
+    console.log("index", index)
     this.state.courses.splice(index, 1);
     this.setState(this.state);
   }
@@ -86,7 +87,7 @@ class CourseSelection extends Component
     let coursesDisplay = courses.map( (course, index) =>
       <li key={index} className="course">
         {course}
-        <a className="remove-course" id={index} onClick={this.handleOnRemove}> <i className="material-icons">close</i> </a>
+        <a className="remove-course" onClick={this.handleOnRemove}> <i className="material-icons" id={index}>close</i> </a>
       </li>
     )
 

@@ -60,10 +60,12 @@ li { list-style: none }/* list style override */
 .course { font-size: 1.5rem; margin: 20px auto; color: #424242; }
 .newCourseInput 
 	{ font-size: 1.25rem; border: none; border-bottom: 2px solid #BDBDBD; border-radius: 2px;  }
+.remove-course { vertical-align: middle; }
 .submitButtonArea { position: absolute; bottom: 60px; }
 .groupsButton > a { color: #fff; text-decoration: none; }
 
 /* Groups Page */
+.action { font-size: 1.5rem; color: #424242; }
 .groups { padding: 10px; }
 .group 
 { 
@@ -83,8 +85,8 @@ li { list-style: none }/* list style override */
 .groupInfo > li { margin: auto 10px; }
 
 /* Sidebar */
-.myGroups {padding: 0;}
-.myGroup { margin-top: 10px !important;  }
+.myGroups, .groupMembers {padding: 0;}
+.myGroup, .groupMember { margin-top: 10px !important;  }
 .profileGravatar {height: 100px; width: 100px; border-radius: 3px;}
 .sidebar 
 { 
