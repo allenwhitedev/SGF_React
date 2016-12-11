@@ -33,7 +33,7 @@ class Group extends Component
     else if (gravatar === "gravatar4")
       return gravatar4
     else if (gravatar === "gravatar5")
-      return gravatar5                      
+      return gravatar5
   }
 
   render()
@@ -45,7 +45,7 @@ class Group extends Component
         "class": "CEN4010",
         "description": "We're the best at studying, trust us",
         members: ["a83jsj9lsdfj", "b38k2jf0jjsdf"],
-        meetingTimes: ["Mon 11:30am, Wed 12:30pm"],
+        meetingTimes: ["Mon 11:30am", "Wed 12:30pm"],
         locationName: "EE 106",
         location: ["lat": 33.556828283, "lng": -77.596928386],
         gravatar: "gravatar1",
@@ -58,7 +58,7 @@ class Group extends Component
       "class": "CEN4010",
       "description": "We are all MVPs of getting good grades",
       members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
-      meetingTimes: ["Tues 9:15am, Thurs 1:00pm"],
+      meetingTimes: ["Tues 9:15am", "Thurs 1:00pm"],
       locationName: "EE 106",
       location: ["lat": 33.556828283, "lng": -77.596928386],
       gravatar: "gravatar2",
@@ -70,7 +70,7 @@ class Group extends Component
       "name": "Sleepy Students And Staff",
       "class": "COP4020",
       members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
-      meetingTimes: ["Tues 11:15am, Thurs 3:00pm"],
+      meetingTimes: ["Tues 11:15am", "Thurs 3:00pm"],
       locationName: "EE 106",
       location: ["lat": 33.556828283, "lng": -77.596928386],
       gravatar: "gravatar3",
@@ -81,8 +81,8 @@ class Group extends Component
       _id: "d3j5k3k4j3",
       "name": "Futbol Fans",
       "class": "COP4020",
-      members: ["Tues 3:30pm, Fri 8:30am"],
-      meetingTimes: ["ISODate(2016-14-04T03:03:05.908Z)"],
+      members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
+      meetingTimes: ["Tues 3:30pm", "Fri 8:30am"],
       locationName: "EE 106",
       location: ["lat": 33.556828283, "lng": -77.596928386],
       gravatar: "gravatar4",
@@ -94,7 +94,7 @@ class Group extends Component
       "name": "Crazy Kids",
       "class": "COP4020",
       members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
-      meetingTimes: ["Sat 12:00am, Sun 1:00pm"],
+      meetingTimes: ["Sat 12:00am", "Sun 1:00pm"],
       locationName: "EE 106",
       location: ["lat": 33.556828283, "lng": -77.596928386],
       gravatar: "gravatar5",
@@ -111,18 +111,23 @@ class Group extends Component
 
     let memberNames = ["Brandon", "Danh", "David", "Elizabeth", "Newil"]
     let members = null || group.members
-    let membersDisplay = members.map( (member, index) => 
-      <li key={index} className="groupMember"> {memberNames[index]}</li>  
+    let membersDisplay = members.map( (member, index) =>
+      <li key={index} className="groupMember"> {memberNames[index]}</li>
     )
 
-    let groupActions = 
+    let groupActions =
     [
-    {type: "file", subtype: "doc", text: "Aly 33 shared studyGuide1.doc"}, 
-    {type: "meetup", text: "BillyT requested a meetup@ Tues 4:30pm"}, 
-    {type: "join", text: "Eli4fun joined Most Valuable Study"}
+      {type: "file", subtype: "doc", text: "Aly 33 shared studyGuide1.doc"},
+      {type: "meetup", text: "BillyT requested a meetup@ Tues 4:30pm"},
+      {type: "join", text: "Eli4fun joined Most Valuable Study"}
     ]
-    let groupActionsDisplay = groupActions.map( (action, index) => 
+
+    let groupActionsDisplay = groupActions.map( (action, index) =>
       <li key={index} className="action">{action.text}</li>
+    )
+
+    let meetUpDisplay = group.meetingTimes.map( (meetingTimes, index) =>
+      <li key={index} className="action">Meetup {index+1} at {meetingTimes}</li>
     )
 
     return(
@@ -134,10 +139,10 @@ class Group extends Component
           <h1 className="textCenter sidebarTitle">{ abbreviateString(group.name) }</h1>
           <img className="profileGravatar" src={this.getGravatar(group.gravatar)} alt="{group.name}" />
 
-          <h2 className="textCenter">Reminders</h2>   
+          <h2 className="textCenter">Reminders</h2>
             <h4 className="reminder">No Reminders For {abbreviateString(group.name)}</h4>
-          
-          <h2 className="textCenter">Members</h2> 
+
+          <h2 className="textCenter">Members</h2>
           <ul className="groupMembers">
             {membersDisplay}
           </ul>
@@ -145,14 +150,15 @@ class Group extends Component
 
         {/* Main */}
         <main className="sidebarMain textCenter">
-           <h1 className="">Recent Activity</h1>
-           <ul className="groupActions">{groupActionsDisplay}</ul>
+          <h1 className="">Recent Activity</h1>
+          <ul className="groupActions">{groupActionsDisplay}</ul>
 
-            <h1 className="">Meetup 1 <img src="//ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png" alt="gdoc"/></h1>
-             <h1 className="">Meetup 2</h1>
+          {meetUpDisplay}
+          {/* <h1 className="">Meetup 1 <img src="//ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png" alt="gdoc"/></h1>
+          <h1 className="">Meetup 2</h1> */}
 
-              <h1 className="">Files</h1>
-               <h1 className="">Chat</h1>
+          <h1 className="">Files</h1>
+          <h1 className="">Chat</h1>
         </main>
 
       </div>

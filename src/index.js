@@ -14,9 +14,9 @@ import { Router, Route, browserHistory } from 'react-router'
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route component={App}>
+      <Route path="/" component={LoginControl} />
       <Route path="courseSelection" component={CourseSelection}/>
       <Route path="groups" component={Groups} />
-      <Route path="/" component={LoginControl} /> 
       <Route name="group" path="/groups/:groupName" component={Group} />
       <Route path="/users/:userId" component={User} />
     </Route>
