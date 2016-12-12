@@ -77,9 +77,13 @@ class CourseSelection extends Component
         <Link to="/groups"> Go To Groups </Link>
       </button>
     : // false
-      submitButton = <button className="groupsButton textCenter defaultButton boxShadow2 disabled" disabled="true" onSubmit={this.handleSubmitCourses}>
-        Go To Groups
-      </button>
+      submitButton = 
+      <div>
+        <h3 className="textCenter">*Add at least one course before proceeding</h3>
+        <button className="groupsButton textCenter defaultButton boxShadow2 disabled" disabled="true" onSubmit={this.handleSubmitCourses}>
+          Go To Groups
+        </button>
+      </div>
 
     let courses = this.state.courses
 

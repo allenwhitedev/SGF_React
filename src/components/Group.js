@@ -57,7 +57,7 @@ class Group extends Component
       "name": "Most Valuable Studiers",
       "class": "CEN4010",
       "description": "We are all MVPs of getting good grades",
-      members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
+      members: ["a83jsj9lsdfj", "c4j2jckdjdj2", "a83jsj9lsdfj", "a83jsj9lsdfj", "a83jsj9lsdfj"],
       meetingTimes: ["Tues 9:15am", "Thurs 1:00pm"],
       locationName: "EE 106",
       location: ["lat": 33.556828283, "lng": -77.596928386],
@@ -117,9 +117,9 @@ class Group extends Component
 
     let groupActions =
     [
-      {type: "file", subtype: "doc", text: "Aly 33 shared studyGuide1.doc"},
-      {type: "meetup", text: "BillyT requested a meetup@ Tues 4:30pm"},
-      {type: "join", text: "Eli4fun joined Most Valuable Study"}
+      {type: "file", subtype: "doc", text: "Brandon shared studyGuide1.doc"},
+      {type: "meetup", text: "Brandon requested a meetup@ Tues 4:30pm"},
+      {type: "join", text: "Danh joined Most Valuable Study"}
     ]
 
     let groupActionsDisplay = groupActions.map( (action, index) =>
@@ -171,8 +171,7 @@ class Group extends Component
           {/* <h1 className="">Meetup 1 <img src="//ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png" alt="gdoc"/></h1>
           <h1 className="">Meetup 2</h1> */}
 
-          <h1 className="">Files</h1>
-          <h1 className="">Chat</h1>
+          {/* <h1 className="">Files</h1> <h1 className="">Chat</h1> */}
         </main>
 
       </div>

@@ -10,10 +10,14 @@ li { list-style: none }/* list style override */
 .center { margin: auto;  }
 .defaultButton 
 { 
-	background-color: #41b097; border: none; font-size: 1.5rem; color: #fff; 
+	background-color: #009688; border: none; font-size: 1.5rem; color: #fff; 
 	border-radius: 3px; font-weight: 300; padding : 8px 100px; 
 }
+.defaultButton:hover { background-color: #009183; } 
+.defaultButton:active 
+	{ background-color: #007D6F; box-shadow: none; transform: translateY(3px); }
 .disabled { background-color: #BDBDBD; }
+.disabled:hover { background-color: #B8B8B8;  }
 .flexCenter { display: flex; justify-content: center; align-items: center;  }
 .flexHorizontalLayout { display: flex; align-items: center; flex-direction: row; justify-content: space-between; }
 .fontSize32px { font-size: 32px;  }
