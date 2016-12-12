@@ -18,7 +18,9 @@ li { list-style: none }/* list style override */
 .flexHorizontalLayout { display: flex; align-items: center; flex-direction: row; justify-content: space-between; }
 .fontSize32px { font-size: 32px;  }
 .fullWidth { width: 100%; }
-.gravatarSmall { height: 40px; width: 40px; border-radius: 3px;}
+.gravatarSmall { height: 40px; width: 40px; border-radius: 3px; }
+.lightGreyText { color: #BDBDBD; }
+.margin0 { margin: 0; }
 .marginRight10px { margin-right: 10px;  }
 .paddingRight10px { padding-right: 10px;  }
 .roboto { font-family: 'Roboto', sans-serif; }
@@ -65,17 +67,18 @@ li { list-style: none }/* list style override */
 .groupsButton > a { color: #fff; text-decoration: none; }
 
 /* Groups Page */
-.action { font-size: 1.5rem; color: #424242; }
+.action { font-size: 1.5rem; font-weight: 300; }
 .groups { padding: 10px; }
-.group 
+/* includes meetups from group page */ 
+.group, .meetup 
 { 
-	background-color: #fff; padding: 0; border: 1px solid #ebebeb; margin-bottom: 20px; 
+	background-color: #fff; padding: 0; border: 1px solid #ebebeb;  
 	width: 90%; max-width: 800px; margin: 20px auto ; border-radius: 2px;
 }
-.groupTextInfo { padding: 5px 20px; }
-.groupTextInfo > * { text-decoration: none;  }
-.groupName { margin: 5px auto;  vertical-align: middle; }
-.groupInfo 
+.groupTextInfo, .meetupTextInfo { padding: 5px 20px; }
+.groupTextInfo > *, .meetupTextInfo > * { text-decoration: none;  }
+.groupName, .meetupName { margin: 5px auto;  vertical-align: middle; }
+.groupInfo, .meetupInfo /* from meetup page */
 { 
 	padding: 12px 0px; background-color: #009688; transform: translate(-1px, 1px); 
 	border-right: 1px solid #41b097; border-left: 1px solid #41b097; color: rgba(255,255,255,.9); 
@@ -83,6 +86,9 @@ li { list-style: none }/* list style override */
 }
 .groupInfo i { font-size: 2.25rem;  }
 .groupInfo > li { margin: auto 10px; }
+
+/* Group Page */
+.meetupIcon {  font-size: 2.5rem; }
 
 /* Sidebar */
 .myGroups, .groupMembers {padding: 0;}

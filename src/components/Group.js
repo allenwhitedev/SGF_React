@@ -123,11 +123,25 @@ class Group extends Component
     ]
 
     let groupActionsDisplay = groupActions.map( (action, index) =>
-      <li key={index} className="action">{action.text}</li>
+      <li key={index} className="action lightGreyText">{action.text}</li>
     )
 
-    let meetUpDisplay = group.meetingTimes.map( (meetingTimes, index) =>
-      <li key={index} className="action">Meetup {index+1} at {meetingTimes}</li>
+    let meetupDisplay = group.meetingTimes.map( (meetingTime, index) =>
+      <li key={index} className="meetup boxShadow1">
+        
+        <section className="groupTextInfo"> 
+          <h2 className="meetupName verticalAlignFlex"> <i className="material-icons marginRight10px meetupIcon">event</i> <span> Meetup {index + 1} </span> </h2>
+        </section>
+
+        <ul className="groupInfo margin0 tabPlusOnly fullWidth flexHorizontalLayout" id="">
+          <li className="groupMembers verticalAlignFlex"> <i className="material-icons">group</i> &nbsp; {group.members.length} members </li>
+          <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {meetingTime} </li>
+          <li className="locationName verticalAlignFlex"> 
+            <i className="material-icons">place</i> &nbsp;
+            <span className="whiteText"> {group.locationName} </span> 
+          </li>
+        </ul>
+      </li>
     )
 
     return(
@@ -153,7 +167,7 @@ class Group extends Component
           <h1 className="">Recent Activity</h1>
           <ul className="groupActions">{groupActionsDisplay}</ul>
 
-          {meetUpDisplay}
+          {meetupDisplay}
           {/* <h1 className="">Meetup 1 <img src="//ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x16.png" alt="gdoc"/></h1>
           <h1 className="">Meetup 2</h1> */}
 
