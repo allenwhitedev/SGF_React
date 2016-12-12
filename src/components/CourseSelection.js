@@ -49,6 +49,7 @@ class CourseSelection extends Component
   handleOnRemove(event)
   {
     let index = event.target.id
+    console.log("index", index)
     this.state.courses.splice(index, 1);
     this.setState(this.state);
   }
@@ -61,6 +62,7 @@ class CourseSelection extends Component
   handleOnSubmit(event)
   {
     event.preventDefault()
+
     // adds new course to courses, reset newCourse state
     this.setState({ courses: this.state.courses.concat(this.state.newCourse), newCourse: "" })
   }
@@ -85,7 +87,7 @@ class CourseSelection extends Component
     let coursesDisplay = courses.map( (course, index) =>
       <li key={index} className="course">
         {course}
-        <a className="remove-course" id={index} onClick={this.handleOnRemove}> <i className="material-icons">close</i> </a>
+        <a className="remove-course" onClick={this.handleOnRemove}> <i className="material-icons" id={index}>close</i> </a>
       </li>
     )
 
@@ -106,7 +108,7 @@ class CourseSelection extends Component
         <footer className="submitButtonArea fullWidth textCenter">
           {submitButton}
         </footer>
-
+        
       </section>
     )
   }
