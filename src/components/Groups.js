@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Request from 'superagent'
+
 import gravatar1 from '../img/gravatar1.png'
 import gravatar2 from '../img/gravatar2.png'
 import gravatar3 from '../img/gravatar3.png'
@@ -15,73 +17,15 @@ class Groups extends Component
   {
     super(props)
 
-    this.handleClickGroup = this.handleClickGroup.bind(this)
+    this.handleClickGroup = this.handleClickGroup.bind(this)       
 
-    this.state = {myGroups: [], groupsHere: [
-      {
-        _id: "a83jgdfsdf",
-        "name": "Super Studiers",
-        "class": "CEN4010",
-        "description": "We're the best at studying, trust us",
-        members: ["a83jsj9lsdfj", "b38k2jf0jjsdf"],
-        meetingTimes: ["Mon 11:30am, Wed 12:30pm"],
-        locationName: "EE 106",
-        location: ["lat": 33.556828283, "lng": -77.596928386],
-        gravatar: "gravatar1",
-        lastActivityAt: "ISODate(2016-11-26T00:32:48.745Z)",
-        createdAt: "ISODate(2016-11-26T00:32:48.745Z)"
-      },
-      {
-      _id: "b2j5k3k4j3",
-      "name": "Most Valuable Studiers",
-      "class": "CEN4010",
-      "description": "We are all MVPs of getting good grades",
-      members: ["a83jsj9lsdfj", "c4j2jckdjdj2", "a83jsj9lsdsdf", "a83jsj9sdfsdffj", "a83jsj9lsdfj"],
-      meetingTimes: ["Tues 9:15am, Thurs 1:00pm"],
-      locationName: "EE 106",
-      location: ["lat": 33.556828283, "lng": -77.596928386],
-      gravatar: "gravatar2",
-      lastActivityAt: "ISODate(2016-15-26T00:32:48.745Z)",
-      createdAt: "ISODate(2016-10-22T00:32:48.745Z)"
-      },
-      {
-      _id: "cas2j3k4j3",
-      "name": "Sleepy Students And Staff",
-      "class": "COP4020",
-      members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
-      meetingTimes: ["Tues 11:15am, Thurs 3:00pm"],
-      locationName: "EE 106",
-      location: ["lat": 33.556828283, "lng": -77.596928386],
-      gravatar: "gravatar3",
-      lastActivityAt: "ISODate(2016-15-26T00:32:48.745Z)",
-      createdAt: "ISODate(2016-10-22T00:32:48.745Z)"
-      },
-      {
-      _id: "d3j5k3k4j3",
-      "name": "Futbol Fans",
-      "class": "COP4020",
-      members: ["Tues 3:30pm, Fri 8:30am", "a83jsj9lsdfj"],
-      meetingTimes: ["ISODate(2016-14-04T03:03:05.908Z)"],
-      locationName: "EE 106",
-      location: ["lat": 33.556828283, "lng": -77.596928386],
-      gravatar: "gravatar4",
-      lastActivityAt: "ISODate(2016-15-26T00:32:48.745Z)",
-      createdAt: "ISODate(2016-10-22T00:32:48.745Z)"
-      },
-      {
-      _id: "e25jk3k4j3",
-      "name": "Crazy Kids",
-      "class": "COP4020",
-      members: ["a83jsj9lsdfj", "c4j2jckdjdj2"],
-      meetingTimes: ["Sat 12:00am, Sun 1:00pm"],
-      locationName: "EE 106",
-      location: ["lat": 33.556828283, "lng": -77.596928386],
-      gravatar: "gravatar5",
-      lastActivityAt: "ISODate(2016-15-26T00:32:48.745Z)",
-      createdAt: "ISODate(2016-10-22T00:32:48.745Z)"
-      }
-    ] }
-  
+    this.state = {groups: [], myGroups: []}
+  }
+
+  componentDidMount()
+  {
+    let url = "http://localhost:3000/groups"
+    this.requestGroupsFromURL(url) // get groups from backend
   }
 
   getGravatar(gravatar)
@@ -98,76 +42,67 @@ class Groups extends Component
       return gravatar5                      
   }
 
-  formatDate(date) 
+  handleClickGroup(group)
   {
-    let formattedDate = ""
-    return date + formattedDate
-    // *to add implementation 
-    // (maybe add format date and abbreviate string to javascript modules)
-  }
+    //let myGroups = this.state.myGroups
+    //let groups = this.state.groups
 
-  addMyGroup()
-  {
-
-  }
-
-  handleClickGroup(name)
-  {
-    console.log("group to add name:", name)
-
-    let tmpGroups = this.state.myGroups
-    let tmpGroupsHere = this.state.groupsHere
+    console.log("group", group)
+    // for (let i = 0; i < myGroups.length; i++)
+    //   if ( myGroups[i].name === name.name )
+    //     return
     
-    // insert user if they are not already in the group
-    if ( tmpGroupsHere[name.index].members.indexOf("basidjfkdkdf") === -1 )
-      tmpGroupsHere[name.index].members.push("basidjfkdkdf")
-
-    console.log("tmpGroupsHere", tmpGroupsHere)
-    
-    for (let i = 0; i < tmpGroups.length; i++)
-      if ( tmpGroups[i].name === name.name )
-        return
+    // // add user to group if they are not already a member
+    // if ( groups[name.index].members.indexOf("basidjfkdkdf") === -1 )
+    //   tmpGroupsHere[name.index].members.push("basidjfkdkdf")
       
-    tmpGroups.push(name)
+    // // add group to user's myGroups
+    // myGroups.push(name)
 
-    this.setState((prevState, props) => ({
-      myGroups: tmpGroups, groupsHere: tmpGroupsHere
-    }))
+    // // update state
+    // this.setState((prevState, props) => ({
+    //   myGroups: myGroups, groups: groups
+    // }))
 
-    console.log("state.groupsHere[0]", this.state.groupsHere[0])
+  }
 
+  requestGroupsFromURL(url)
+  {
+    Request.get(url).then( (response) => {
+      this.setState({groups: JSON.parse( response.text) })
+    })
   }
 
 
   render()
   {
     
-    let groupsDisplay = this.state.groupsHere.map((dummyGroups, index) =>
-      <li key={index} className="group boxShadow1" id={index} onClick={ () => this.handleClickGroup({name: dummyGroups.name, class: dummyGroups.class, index: index}) }>
+    let groupsDisplay = this.state.groups.map((group, index) =>
+      <li key={group._id} className="group boxShadow1" id={index} onClick={ () => this.handleClickGroup({name: group.name, class: group.class, index: index}) }>
         <section className="groupTextInfo"> 
-          <Link to={"groups/" + dummyGroups.name}>
-          <h2 className="groupName verticalAlignFlex"> <img className="gravatarSmall marginRight10px" src={this.getGravatar(dummyGroups.gravatar)} alt={dummyGroups.name}/> <span> {dummyGroups.name} - {dummyGroups.class} </span> </h2>
-          <h3>{dummyGroups.description}</h3>
+          <Link to={"groups/" + group.name}>
+          <h2 className="groupName verticalAlignFlex"> <img className="gravatarSmall marginRight10px" src={this.getGravatar(group.gravatar)} alt={group.name}/> <span> {group.name} - {group.class} </span> </h2>
+          <h3>{group.description}</h3>
           </Link>
         </section>
 
         <ul className="groupInfo tabPlusOnly fullWidth flexHorizontalLayout" id="">
-          <li className="groupMembers verticalAlignFlex"> <i className="material-icons">group</i> &nbsp; {dummyGroups.members.length} members </li>
-          <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {dummyGroups.meetingTimes} </li>
+          <li className="groupMembers verticalAlignFlex"> <i className="material-icons">group</i> &nbsp; {group.members.length} members </li>
+          <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {group.meetingTimes} </li>
           <li className="locationName verticalAlignFlex"> 
             <i className="material-icons">place</i> &nbsp;
-            <span className="whiteText"> {dummyGroups.locationName} </span> 
+            <span className="whiteText"> {group.locationName} </span> 
           </li>
         </ul>
       </li>
     )
 
-    let myGroups = this.state.myGroups.map( (myGroup, index) =>
-      <li key={index} className="myGroup textCenter">
-        {myGroup.name} ({myGroup.class})
-        <br />
-      </li>
-    )
+    // let myGroups = this.state.myGroups.map( (myGroup, index) =>
+    //   <li key={index} className="myGroup textCenter">
+    //     {myGroup.name} ({myGroup.class})
+    //     <br />
+    //   </li>
+    // )
 
     return(
      
@@ -183,7 +118,7 @@ class Groups extends Component
           
           <h2 className="textCenter">My Groups</h2> 
           <ul className="myGroups">
-            {myGroups}
+            {/*myGroups*/}
           </ul>
         </section>
 
