@@ -65,6 +65,7 @@ class CourseSelection extends Component
 
     // adds new course to courses, reset newCourse state
     this.setState({ courses: this.state.courses.concat(this.state.newCourse), newCourse: "" })
+    console.log(this.state.courses);
   }
 
   render()
@@ -77,7 +78,7 @@ class CourseSelection extends Component
         <Link to="/groups"> Go To Groups </Link>
       </button>
     : // false
-      submitButton = 
+      submitButton =
       <div>
         <h3 className="textCenter">*Add at least one course before proceeding</h3>
         <button className="groupsButton textCenter defaultButton boxShadow2 disabled" disabled="true" onSubmit={this.handleSubmitCourses}>
@@ -112,7 +113,7 @@ class CourseSelection extends Component
         <footer className="submitButtonArea fullWidth textCenter">
           {submitButton}
         </footer>
-        
+
       </section>
     )
   }
