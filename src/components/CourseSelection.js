@@ -65,6 +65,7 @@ class CourseSelection extends Component
 
     // adds new course to courses, reset newCourse state
     this.setState({ courses: this.state.courses.concat(this.state.newCourse), newCourse: "" })
+    console.log(this.state.courses);
   }
 
   render()

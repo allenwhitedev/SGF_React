@@ -18,14 +18,11 @@ class Groups extends Component
     this.handleClickGroup = this.handleClickGroup.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
     this.toggleForm = this.toggleForm.bind(this)
+    this.addMyGroup = this.addMyGroup.bind(this)
 
-    this.state = {isHidden: true, newGroup: {
-      "name": "",
-      "class": "",
-      "description": "",
-      "meetingTimes": ""
-    }
-    , myGroups: [], groupsHere: [
+    this.state = {isHidden: true, newGroupName: "", newGroupClass: "", newGroupMeetingTimes: "", newGroupDescription: "",
+      newGroup: {name: "", class: "", description: "", meetingTimes: ""},
+      myGroups: [], groupsHere: [
       {
         _id: "a83jgdfsdf",
         "name": "Super Studiers",
@@ -114,18 +111,22 @@ class Groups extends Component
     // (maybe add format date and abbreviate string to javascript modules)
   }
 
-  addMyGroup(event)
+  addMyGroup()
   {
-    alert("Group Added")
-    // event.preventDefault()
-    //
-    // // adds new course to courses, reset newCourse state
-    // this.setState({ groupsHere: this.state.groupsHere.concat(this.state.newGroup)})
+    this.setState({newGroup:  {
+      name: this.state.newGroupName,
+      class: this.state.newGroupClass,
+      meetingTimes: this.state.newGroupMeetingTimes,
+      description: this.state.newGroupDescription
+    }})
+    this.toggleForm()
+
+    //Needs to push to groupsHere but don't know how
   }
 
   toggleForm()
   {
-    this.state.isHidden === true ? this.setState({isHidden: false}) : this.setState({isHidden: true})
+    this.setState({isHidden: !this.state.isHidden})
   }
 
   handleClickGroup(name)
@@ -196,14 +197,13 @@ class Groups extends Component
     else
       addGroupButton = <button onClick={this.toggleForm}> x </button>
 
-
     let newGroupForm =
     <form hidden={this.state.isHidden}>
-      New Group name: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.name} name={this.state.newGroup.name}/><br/>
-      Class: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.class} placeholder="CEN4010"/><br/>
-      Meeting Times: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.meetingTimes} placeholder="Mon 11:30am, Wed 12:30pm"/><br/>
-      Description of Group: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.description} placeholder="optional"/><br/>
-      <button type="button">Create New Group</button>
+      New Group name: <input onChange={this.handleOnChange} value={this.state.newGroupName} name="newGroupName" type="text" /><br/>
+    Class: <input onChange={this.handleOnChange} value={this.state.newGroupClass} name="newGroupClass" type="text" placeholder="CEN4010"/><br/>
+  Meeting Times: <input onChange={this.handleOnChange} value={this.state.newGroupMeetingTimes} name="newGroupMeetingTimes" type="text"  placeholder="Mon 11:30am, Wed 12:30pm"/><br/>
+Description of Group: <input onChange={this.handleOnChange} value={this.state.newGroupDescription} name="newGroupDescription" type="text" placeholder="optional"/><br/>
+      <button type="button" onClick={this.addMyGroup}>Create New Group</button>
     </form>
 
     return(
