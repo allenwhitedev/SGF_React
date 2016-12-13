@@ -16,8 +16,16 @@ class Groups extends Component
     super(props)
 
     this.handleClickGroup = this.handleClickGroup.bind(this)
+    this.handleOnChange = this.handleOnChange.bind(this)
+    this.toggleForm = this.toggleForm.bind(this)
 
-    this.state = {myGroups: [], groupsHere: [
+    this.state = {isHidden: true, newGroup: {
+      "name": "",
+      "class": "",
+      "description": "",
+      "meetingTimes": ""
+    }
+    , myGroups: [], groupsHere: [
       {
         _id: "a83jgdfsdf",
         "name": "Super Studiers",
@@ -81,7 +89,7 @@ class Groups extends Component
       createdAt: "ISODate(2016-10-22T00:32:48.745Z)"
       }
     ] }
-  
+
   }
 
   getGravatar(gravatar)
@@ -95,20 +103,29 @@ class Groups extends Component
     else if (gravatar === "gravatar4")
       return gravatar4
     else if (gravatar === "gravatar5")
-      return gravatar5                      
+      return gravatar5
   }
 
-  formatDate(date) 
+  formatDate(date)
   {
     let formattedDate = ""
     return date + formattedDate
-    // *to add implementation 
+    // *to add implementation
     // (maybe add format date and abbreviate string to javascript modules)
   }
 
-  addMyGroup()
+  addMyGroup(event)
   {
+    alert("Group Added")
+    // event.preventDefault()
+    //
+    // // adds new course to courses, reset newCourse state
+    // this.setState({ groupsHere: this.state.groupsHere.concat(this.state.newGroup)})
+  }
 
+  toggleForm()
+  {
+    this.state.isHidden === true ? this.setState({isHidden: false}) : this.setState({isHidden: true})
   }
 
   handleClickGroup(name)
@@ -117,17 +134,17 @@ class Groups extends Component
 
     let tmpGroups = this.state.myGroups
     let tmpGroupsHere = this.state.groupsHere
-    
+
     // insert user if they are not already in the group
     if ( tmpGroupsHere[name.index].members.indexOf("basidjfkdkdf") === -1 )
       tmpGroupsHere[name.index].members.push("basidjfkdkdf")
 
     console.log("tmpGroupsHere", tmpGroupsHere)
-    
+
     for (let i = 0; i < tmpGroups.length; i++)
       if ( tmpGroups[i].name === name.name )
         return
-      
+
     tmpGroups.push(name)
 
     this.setState((prevState, props) => ({
@@ -138,13 +155,18 @@ class Groups extends Component
 
   }
 
+  handleOnChange(event)
+  {
+    this.setState({[event.target.name]: event.target.value})
+  }
 
   render()
   {
-    
+    let addGroupButton = null
+
     let groupsDisplay = this.state.groupsHere.map((dummyGroups, index) =>
       <li key={index} className="group boxShadow1" id={index} onClick={ () => this.handleClickGroup({name: dummyGroups.name, class: dummyGroups.class, index: index}) }>
-        <section className="groupTextInfo"> 
+        <section className="groupTextInfo">
           <Link to={"groups/" + dummyGroups.name}>
           <h2 className="groupName verticalAlignFlex"> <img className="gravatarSmall marginRight10px" src={this.getGravatar(dummyGroups.gravatar)} alt={dummyGroups.name}/> <span> {dummyGroups.name} - {dummyGroups.class} </span> </h2>
           <h3>{dummyGroups.description}</h3>
@@ -154,9 +176,9 @@ class Groups extends Component
         <ul className="groupInfo tabPlusOnly fullWidth flexHorizontalLayout" id="">
           <li className="groupMembers verticalAlignFlex"> <i className="material-icons">group</i> &nbsp; {dummyGroups.members.length} members </li>
           <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {dummyGroups.meetingTimes} </li>
-          <li className="locationName verticalAlignFlex"> 
+          <li className="locationName verticalAlignFlex">
             <i className="material-icons">place</i> &nbsp;
-            <span className="whiteText"> {dummyGroups.locationName} </span> 
+            <span className="whiteText"> {dummyGroups.locationName} </span>
           </li>
         </ul>
       </li>
@@ -169,8 +191,23 @@ class Groups extends Component
       </li>
     )
 
+    if(this.state.isHidden)
+      addGroupButton =  <button onClick={this.toggleForm}> Create new group </button>
+    else
+      addGroupButton = <button onClick={this.toggleForm}> x </button>
+
+
+    let newGroupForm =
+    <form hidden={this.state.isHidden}>
+      New Group name: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.name} name={this.state.newGroup.name}/><br/>
+      Class: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.class} placeholder="CEN4010"/><br/>
+      Meeting Times: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.meetingTimes} placeholder="Mon 11:30am, Wed 12:30pm"/><br/>
+      Description of Group: <input onChange={this.handleOnChange} type="text" value={this.state.newGroup.description} placeholder="optional"/><br/>
+      <button type="button">Create New Group</button>
+    </form>
+
     return(
-     
+
       <div>
         {/* Sidebar */}
         <section className="sidebar textCenter">
@@ -178,13 +215,15 @@ class Groups extends Component
           <h1 className="textCenter sidebarTitle">Brandon34</h1>
           <img className="profileGravatar" src={gravatar1} alt="User" />
 
-          <h2 className="textCenter">Reminders</h2>   
+          <h2 className="textCenter">Reminders</h2>
             <h4 className="reminder">No Reminders At This Time</h4>
-          
-          <h2 className="textCenter">My Groups</h2> 
+
+          <h2 className="textCenter">My Groups</h2>
           <ul className="myGroups">
             {myGroups}
           </ul>
+          {addGroupButton}
+          {newGroupForm}
         </section>
 
         {/* Main */}
@@ -196,7 +235,6 @@ class Groups extends Component
           </ul>
         </main>
       </div>
-     
     )
   }
 }
