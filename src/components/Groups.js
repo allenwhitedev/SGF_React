@@ -28,6 +28,13 @@ class Groups extends Component
     this.requestGroupsFromURL(url) // get groups from backend
   }
 
+  getLocalStorage(item)
+  {
+    if (item === "userGravatar")
+      return this.getGravatar( localStorage.getItem(item) )
+    return localStorage.getItem(item)
+  }
+
   getGravatar(gravatar)
   {
     if (gravatar === "gravatar1")
@@ -101,8 +108,8 @@ class Groups extends Component
         {/* Sidebar */}
         <section className="sidebar textCenter">
           <br />
-          <h1 className="textCenter sidebarTitle">Brandon34</h1>
-          <img className="profileGravatar" src={gravatar1} alt="User" />
+          <h1 className="textCenter sidebarTitle">{this.getLocalStorage("userName")}</h1>
+          <img className="profileGravatar" src={this.getLocalStorage("userGravatar")} alt="User" />
 
           <h2 className="textCenter">Reminders</h2>
             <h4 className="reminder">No Reminders At This Time</h4>
