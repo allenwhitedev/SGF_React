@@ -4,6 +4,8 @@ import SignUpForm from './SignUpForm.js'
 import fauLogo from '../img/logo.svg'
 import CourseSelection from './CourseSelection'
 
+import Request from 'superagent'
+
 import { browserHistory } from 'react-router'
 
 class LoginControl extends Component
@@ -42,6 +44,7 @@ class LoginControl extends Component
   handleSubmit(event)
   {
     event.preventDefault()
+    let url = 'http://localhost:3000'
 
     let name = null || event.target.username.value  
     let password = null || event.target.password.value
@@ -50,11 +53,14 @@ class LoginControl extends Component
     if (event.target.email) // sign up user with email & data
       email = event.target.email.value
  
-    if (name && email && password )
-      console.log('sign up user')
-    else if (name && password)
+    if (name && email && password ) // sign up user
+    {
+      console.log('sign up user') 
+      this.requestSignupUser(url, name, email, password)
+    } 
+    else if (name && password) // sign in user
       console.log('sign in user')
-    else
+    else // insuficient login info
       console.log("display 'Insufficient Login Data'")
 
     localStorage.setItem('name', name)
@@ -62,6 +68,39 @@ class LoginControl extends Component
 
     console.log("name,email,pass", name, email, password)
     //browserHistory.push('CourseSelection')
+  }
+
+  requestSignupUser(url, name, email, password)
+  {
+    let tmp = '{"name":"tj","pet":"tobi"}'
+    let reqObj = '{"name": "' + name + '"}' + '{"email": "' + email + '"}' + '{"password": "' + password + '"}' 
+
+    let reqObjTwo = JSON.stringify( {"name": "myName"} )
+
+    Request.post(url)
+    .type('form')
+    .send({ name: name, email: email, password: password })
+    .end((err, res) => 
+    {
+      if (err || !res.ok)
+        console.log("requestSignupUser error", err)
+      else // succesfully create user
+      {
+        let user = JSON.parse(res.text)
+        localStorage.setItem('userId', user._id)
+        localStorage.setItem('userName', user.name)
+        localStorage.setItem('userGravatar', user.gravatar)
+        localStorage.setItem('userReminders', user.reminders)
+
+        console.log("Success in requestSignupUser", JSON.parse(res.text) )
+        browserHistory.push('CourseSelection')
+      }
+    } )
+  }
+
+  requestSigninUser(url)
+  {
+
   }
 
 
