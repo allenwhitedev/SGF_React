@@ -72,10 +72,10 @@ class LoginControl extends Component
 
   requestSignupUser(url, name, email, password)
   {
-    let tmp = '{"name":"tj","pet":"tobi"}'
-    let reqObj = '{"name": "' + name + '"}' + '{"email": "' + email + '"}' + '{"password": "' + password + '"}' 
+    // let tmp = '{"name":"tj","pet":"tobi"}'
+    // let reqObj = '{"name": "' + name + '"}' + '{"email": "' + email + '"}' + '{"password": "' + password + '"}' 
 
-    let reqObjTwo = JSON.stringify( {"name": "myName"} )
+    // let reqObjTwo = JSON.stringify( {"name": "myName"} )
 
     Request.post(url)
     .type('form')

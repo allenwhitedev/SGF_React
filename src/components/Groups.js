@@ -52,6 +52,9 @@ class Groups extends Component
   handleClickJoinGroup(group)
   {
     console.log("group", group)
+
+    let url = 'http://localhost:3000/groups/' + group.groupId
+    this.requestJoinGroup(url, group.groupId)
   }
 
   requestGroupsFromURL(url)
@@ -61,6 +64,31 @@ class Groups extends Component
     Request.get(url).then( (response) => {
       this.setState({groups: JSON.parse( response.text) })
     })
+  }
+
+  requestJoinGroup(url, groupId)
+  {
+    console.log('url', url)
+    let userId = localStorage.getItem('userId')
+    Request.post(url)
+      .type('form')
+      .send({ userId: userId })
+      .end( (err, res) =>
+      {
+        if (err || !res.ok)
+          console.log("requestJoinGroup error")
+        else // successfully join group
+        {
+          let tmpGroups = this.state.groups
+          for (let i in tmpGroups)
+            if (tmpGroups[i]._id === groupId)
+            {
+              tmpGroups[i].members.push(groupId)
+              break
+            }
+          this.setState({groups: tmpGroups})
+        }
+      })
   }
 
 
