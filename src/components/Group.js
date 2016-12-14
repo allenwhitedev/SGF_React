@@ -14,17 +14,16 @@ class Group extends Component
     super(props)
     console.log("this.props.params.groupName", this.props.params.groupName)
 
-    this.state = 
+    this.state =
     {
-      group: { name: "", members: [], meetingTimes: [], actions: [] }, 
-      mGroupName: this.props.groupName, 
-      reminders: [] 
+      group: { name: "", members: [], meetingTimes: [], actions: [] },
+      mGroupName: this.props.groupName,
+      reminders: []
     }
   }
 
   componentDidMount()
   {
-    document.body.scrollTop = 0; // scroll to top
     let url = "http://localhost:3000/groups/" + this.props.params.groupName
     this.fetchGroupFromURL(url)
   }
@@ -37,7 +36,7 @@ class Group extends Component
 
   fetchGroupFromURL(url)
   {
-    Request.get(url).then( (response) => 
+    Request.get(url).then( (response) =>
     {
       this.setState({ group: JSON.parse( response.text) })
     })
@@ -79,17 +78,17 @@ class Group extends Component
 
     let meetupDisplay = this.state.group.meetingTimes.map( (meetingTime, index) =>
       <li key={index} className="meetup boxShadow1">
-        
-        <section className="groupTextInfo"> 
+
+        <section className="groupTextInfo">
           <h2 className="meetupName verticalAlignFlex"> <i className="material-icons marginRight10px meetupIcon">event</i> <span> Meetup {index + 1} </span> </h2>
         </section>
 
         <ul className="groupInfo margin0 tabPlusOnly fullWidth flexHorizontalLayout" id="">
           <li className="groupMembers verticalAlignFlex"> <i className="material-icons">group</i> &nbsp; {this.state.group.members.length} members </li>
           <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {meetingTime} </li>
-          <li className="locationName verticalAlignFlex"> 
+          <li className="locationName verticalAlignFlex">
             <i className="material-icons">place</i> &nbsp;
-            <span className="whiteText"> {this.state.group.locationName} </span> 
+            <span className="whiteText"> {this.state.group.locationName} </span>
           </li>
         </ul>
       </li>

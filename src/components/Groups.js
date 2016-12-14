@@ -17,7 +17,7 @@ class Groups extends Component
   {
     super(props)
 
-    this.handleClickJoinGroup = this.handleClickJoinGroup.bind(this)       
+    this.handleClickJoinGroup = this.handleClickJoinGroup.bind(this)
 
     this.state = {groups: [], myGroups: []}
   }
@@ -39,7 +39,7 @@ class Groups extends Component
     else if (gravatar === "gravatar4")
       return gravatar4
     else if (gravatar === "gravatar5")
-      return gravatar5                      
+      return gravatar5
   }
 
   handleClickJoinGroup(group)
@@ -49,6 +49,8 @@ class Groups extends Component
 
   requestGroupsFromURL(url)
   {
+    //Grabs the data inputted in url, the response is put through JSON formatting,
+    //then set to groups
     Request.get(url).then( (response) => {
       this.setState({groups: JSON.parse( response.text) })
     })
@@ -57,44 +59,44 @@ class Groups extends Component
 
   render()
   {
-    
+
     let groupsDisplay = this.state.groups.map((group, index) =>
       <li key={group._id} className="group boxShadow1" id={index}>
-        <section className="groupTextInfo"> 
-          
-          <h2 className="groupName verticalAlignFlex"> 
+        <section className="groupTextInfo">
+
+          <h2 className="groupName verticalAlignFlex">
             <Link to={"groups/" + group.name}>
-              <section className="verticalAlignFlex"> 
-              <img className="gravatarSmall marginRight10px" src={this.getGravatar(group.gravatar)} alt={group.name}/> 
-              <span> {group.name} - {group.class} </span> 
+              <section className="verticalAlignFlex">
+              <img className="gravatarSmall marginRight10px" src={this.getGravatar(group.gravatar)} alt={group.name}/>
+              <span> {group.name} - {group.class} </span>
               </section>
             </Link>
-            <button className="joinGroupButton rightJustifyFlex verticalAlignFlex tabPlusOnly" onClick={ () => this.handleClickJoinGroup({ groupId: group._id} ) }> 
-              JOIN GROUP &nbsp; 
+            <button className="joinGroupButton rightJustifyFlex verticalAlignFlex tabPlusOnly" onClick={ () => this.handleClickJoinGroup({ groupId: group._id} ) }>
+              JOIN GROUP &nbsp;
               <i className="material-icons">person_add</i> &nbsp;
             </button>
-            <button className="joinGroupButton rightJustifyFlex verticalAlignFlex mobileOnly" onClick={ () => this.handleClickJoinGroup({ groupId: group._id} ) }> 
+            <button className="joinGroupButton rightJustifyFlex verticalAlignFlex mobileOnly" onClick={ () => this.handleClickJoinGroup({ groupId: group._id} ) }>
               <i className="material-icons">person_add</i> &nbsp;
             </button>
           </h2>
           <h3>{group.description}</h3>
-          
+
         </section>
 
         <ul className="groupInfo fullWidth flexHorizontalLayout" id="">
-          <li className="groupMembers tabPlusOnly verticalAlignFlex"> 
+          <li className="groupMembers tabPlusOnly verticalAlignFlex">
           <i className="material-icons">group</i> &nbsp; {group.members.length} members </li>
           <li className="meetingTimes verticalAlignFlex"> <i className="material-icons">access_time</i> &nbsp; {group.meetingTimes} </li>
-          <li className="locationName tabPlusOnly verticalAlignFlex"> 
+          <li className="locationName tabPlusOnly verticalAlignFlex">
             <i className="material-icons">place</i> &nbsp;
-            <span className="whiteText"> {group.locationName} </span> 
+            <span className="whiteText"> {group.locationName} </span>
           </li>
         </ul>
       </li>
     )
 
     return(
-     
+
       <div>
         {/* Sidebar */}
         <section className="sidebar textCenter">
@@ -102,10 +104,10 @@ class Groups extends Component
           <h1 className="textCenter sidebarTitle">Brandon34</h1>
           <img className="profileGravatar" src={gravatar1} alt="User" />
 
-          <h2 className="textCenter">Reminders</h2>   
+          <h2 className="textCenter">Reminders</h2>
             <h4 className="reminder">No Reminders At This Time</h4>
-          
-          <h2 className="textCenter">My Groups</h2> 
+
+          <h2 className="textCenter">My Groups</h2>
           <ul className="myGroups">
             {/*myGroups*/}
           </ul>
@@ -120,7 +122,7 @@ class Groups extends Component
           </ul>
         </main>
       </div>
-     
+
     )
   }
 }
