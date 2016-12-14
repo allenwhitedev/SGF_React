@@ -14,20 +14,13 @@ class LoginControl extends Component
 
 		this.handleSignUpClick = this.handleSignUpClick.bind(this)
     this.handleSignInClick = this.handleSignInClick.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
 
-    this.parentClickHandler = this.parentClickHandler.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     
     this.handleChildClick = this.handleChildClick.bind(this)
 
     this.state = { isSignInState: true, isLoggedIn: false}
 	}
-
-  handleFormSubmit(event)
-  {
-    event.preventDefault()
-    console.log("Handle Form Submit")
-  }
 
   handleChildClick()
   {
@@ -46,11 +39,29 @@ class LoginControl extends Component
       this.setState({ isSignInState: false })
   }
 
-  parentClickHandler(event, username)
+  handleSubmit(event)
   {
     event.preventDefault()
-    console.log("parentClickHandler!")
-    browserHistory.push('CourseSelection')
+
+    let name = null || event.target.username.value  
+    let password = null || event.target.password.value
+    
+    let email = null
+    if (event.target.email) // sign up user with email & data
+      email = event.target.email.value
+ 
+    if (name && email && password )
+      console.log('sign up user')
+    else if (name && password)
+      console.log('sign in user')
+    else
+      console.log("display 'Insufficient Login Data'")
+
+    localStorage.setItem('name', name)
+
+
+    console.log("name,email,pass", name, email, password)
+    //browserHistory.push('CourseSelection')
   }
 
 
@@ -67,7 +78,7 @@ class LoginControl extends Component
 
   	if ( isSignInState === true ) // render Sign In Form
   	{
-  		loginForm = <SignInForm onSubmit={this.parentClickHandler} testProp={this.parentClickHandler}/>
+  		loginForm = <SignInForm onSubmit={this.handleSubmit} testProp={this.handleSubmit}/>
 
   		signInButton = <button className="loginStateButton activeLoginState">
   			SIGN IN <br/> <div className="activeDot textCenter"> </div>
@@ -79,7 +90,7 @@ class LoginControl extends Component
   	}
   	else // render Sign Up form
   	{
-  		loginForm = <SignUpForm onSubmit={this.parentClickHandler} />
+  		loginForm = <SignUpForm onSubmit={this.handleSubmit} />
 
   		signInButton = <button className="loginStateButton" onClick={this.handleSignInClick}>
   			SIGN IN

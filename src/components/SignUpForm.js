@@ -61,7 +61,7 @@ class SignUpForm extends Component{
       <form className="loginForm" onSubmit={this.props.onSubmit} id="signIn">
         <section className="inputArea"> 
           <i className={"material-icons inputIcon " + this.state.accountCircleIcon }>account_circle</i> 
-          <input value={this.state.name} onChange={this.handleChangeName} onFocus={() => this.handleFocus("account_circle")} onBlur={() => this.handleBlur("account_circle")} type="text" name="name" placeholder="name"/><br/>
+          <input value={this.state.name} onChange={this.handleChangeName} onFocus={() => this.handleFocus("account_circle")} onBlur={() => this.handleBlur("account_circle")} type="text" name="username" placeholder="name"/><br/>
         </section>
 
         <section className="inputArea"> 
