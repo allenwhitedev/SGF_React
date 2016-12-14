@@ -57,6 +57,17 @@ class Groups extends Component
     this.requestJoinGroup(url, group.groupId)
   }
 
+  hideIfMember(group)
+  {
+    console.log('hideIfMember', group.members)
+    console.log('userId', localStorage.getItem('userId'))
+    if ( group.members.indexOf( localStorage.getItem('userId') ) !== -1 ) 
+      return "hideDisplayNone"
+    else
+      return "dontHide"
+
+  }
+
   requestGroupsFromURL(url)
   {
     //Grabs the data inputted in url, the response is put through JSON formatting,
@@ -100,13 +111,13 @@ class Groups extends Component
         <section className="groupTextInfo">
 
           <h2 className="groupName verticalAlignFlex">
-            <Link to={"groups/" + group.name}>
+            <Link to={"groups/" + group._id}>
               <section className="verticalAlignFlex">
               <img className="gravatarSmall marginRight10px" src={this.getGravatar(group.gravatar)} alt={group.name}/>
               <span> {group.name} - {group.class} </span>
               </section>
             </Link>
-            <button className="joinGroupButton rightJustifyFlex verticalAlignFlex tabPlusOnly" onClick={ () => this.handleClickJoinGroup({ groupId: group._id} ) }>
+            <button className={this.hideIfMember(group) + " joinGroupButton rightJustifyFlex verticalAlignFlex tabPlusOnly" } onClick={ () => this.handleClickJoinGroup({ groupId: group._id} ) }>
               JOIN GROUP &nbsp;
               <i className="material-icons">person_add</i> &nbsp;
             </button>
