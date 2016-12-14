@@ -24,7 +24,7 @@ class Group extends Component
 
   componentDidMount()
   {
-    let url = "http://localhost:3000/groups/" + this.props.params.groupName
+    let url = "https://sgf-api.herokuapp.com/groups/" + this.props.params.groupName
     this.fetchGroupFromURL(url)
   }
 

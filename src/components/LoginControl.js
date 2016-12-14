@@ -44,7 +44,7 @@ class LoginControl extends Component
   handleSubmit(event)
   {
     event.preventDefault()
-    let url = 'http://localhost:3000'
+    let url = 'https://sgf-api.herokuapp.com'
 
     let name = null || event.target.username.value  
     let password = null || event.target.password.value

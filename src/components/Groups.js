@@ -24,7 +24,7 @@ class Groups extends Component
 
   componentDidMount()
   {
-    let url = "http://localhost:3000/groups"
+    let url = "https://sgf-api.herokuapp.com/groups/"
     this.requestGroupsFromURL(url) // get groups from backend
   }
 
@@ -53,7 +53,7 @@ class Groups extends Component
   {
     console.log("group", group)
 
-    let url = 'http://localhost:3000/groups/' + group.groupId
+    let url = 'https://sgf-api.herokuapp.com/groups/' + group.groupId
     this.requestJoinGroup(url, group.groupId)
   }
 
