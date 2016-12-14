@@ -24,6 +24,7 @@ class Group extends Component
 
   componentDidMount()
   {
+    document.body.scrollTop = 0; // scroll to top
     let url = "http://localhost:3000/groups/" + this.props.params.groupName
     this.fetchGroupFromURL(url)
   }
