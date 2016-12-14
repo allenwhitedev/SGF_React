@@ -44,26 +44,7 @@ class Groups extends Component
 
   handleClickJoinGroup(group)
   {
-    //let myGroups = this.state.myGroups
-    //let groups = this.state.groups
-
     console.log("group", group)
-    // for (let i = 0; i < myGroups.length; i++)
-    //   if ( myGroups[i].name === name.name )
-    //     return
-    
-    // // add user to group if they are not already a member
-    // if ( groups[name.index].members.indexOf("basidjfkdkdf") === -1 )
-    //   tmpGroupsHere[name.index].members.push("basidjfkdkdf")
-      
-    // // add group to user's myGroups
-    // myGroups.push(name)
-
-    // // update state
-    // this.setState((prevState, props) => ({
-    //   myGroups: myGroups, groups: groups
-    // }))
-
   }
 
   requestGroupsFromURL(url)
